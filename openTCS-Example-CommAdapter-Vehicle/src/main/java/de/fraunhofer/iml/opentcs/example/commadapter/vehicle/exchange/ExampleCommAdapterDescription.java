@@ -17,6 +17,11 @@ public class ExampleCommAdapterDescription
   @Override
   public String getDescription() {
     return ResourceBundle.getBundle("de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle").
-        getString("exampleCommAdapterDescription.text");
+        getString("ExampleAdapterFactoryDescription");
+  }
+
+  @Override
+  public boolean isSimVehicleCommAdapter() {
+    return false;
   }
 }

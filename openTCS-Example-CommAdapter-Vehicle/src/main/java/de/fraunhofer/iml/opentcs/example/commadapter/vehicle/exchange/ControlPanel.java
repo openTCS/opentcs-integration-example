@@ -372,10 +372,10 @@ public class ControlPanel
     repeatLastOrderButton = new javax.swing.JButton();
 
     java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle"); // NOI18N
-    connectionSettingsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, bundle.getString("controlPanel.panel_connectionSettings.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+    connectionSettingsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, bundle.getString("VehicleConnectionTitle"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
     connectionSettingsPanel.setLayout(new java.awt.GridBagLayout());
 
-    enableAdapterCheckBox.setText(bundle.getString("controlPanel.checkbox_enableAdapter.text")); // NOI18N
+    enableAdapterCheckBox.setText(bundle.getString("EnableAdapter")); // NOI18N
     enableAdapterCheckBox.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         enableAdapterCheckBoxActionPerformed(evt);
@@ -383,7 +383,7 @@ public class ControlPanel
     });
     connectionSettingsPanel.add(enableAdapterCheckBox, new java.awt.GridBagConstraints());
 
-    hostLabel.setText(bundle.getString("controlPanel.label_host.text")); // NOI18N
+    hostLabel.setText(bundle.getString("VehicleIpAddress")); // NOI18N
     gridBagConstraints = new java.awt.GridBagConstraints();
     gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
     gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 3);
@@ -399,7 +399,7 @@ public class ControlPanel
     connectionSettingsPanel.add(hostTextField, gridBagConstraints);
 
     connectedButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/de/fraunhofer/iml/opentcs/example/commadapter/vehicle/res/symbols/LEDGray.gif"))); // NOI18N
-    connectedButton.setText(bundle.getString("controlPanel.button_isConnected.text")); // NOI18N
+    connectedButton.setText(bundle.getString("AdapterConnected")); // NOI18N
     connectedButton.setBorderPainted(false);
     connectedButton.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/de/fraunhofer/iml/opentcs/example/commadapter/vehicle/res/symbols/LEDRed.gif"))); // NOI18N
     connectedButton.setDisabledSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/de/fraunhofer/iml/opentcs/example/commadapter/vehicle/res/symbols/LEDGreen.gif"))); // NOI18N
@@ -410,7 +410,7 @@ public class ControlPanel
     gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
     connectionSettingsPanel.add(connectedButton, gridBagConstraints);
 
-    portLabel.setText(bundle.getString("controlPanel.label_port.text")); // NOI18N
+    portLabel.setText(bundle.getString("VehicleTcpPort")); // NOI18N
     gridBagConstraints = new java.awt.GridBagConstraints();
     gridBagConstraints.gridx = 1;
     gridBagConstraints.gridy = 1;
@@ -445,23 +445,18 @@ public class ControlPanel
   connectionSettingsPanel.add(portTextField, gridBagConstraints);
 
   activeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/de/fraunhofer/iml/opentcs/example/commadapter/vehicle/res/symbols/LEDGray.gif"))); // NOI18N
-  activeButton.setText(bundle.getString("controlPanel.button_isActive.text")); // NOI18N
+  activeButton.setText(bundle.getString("ControlPanel.AdapterActive")); // NOI18N
   activeButton.setBorderPainted(false);
   activeButton.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/de/fraunhofer/iml/opentcs/example/commadapter/vehicle/res/symbols/LEDRed.gif"))); // NOI18N
   activeButton.setDisabledSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/de/fraunhofer/iml/opentcs/example/commadapter/vehicle/res/symbols/LEDGreen.gif"))); // NOI18N
   activeButton.setEnabled(false);
-  activeButton.addActionListener(new java.awt.event.ActionListener() {
-    public void actionPerformed(java.awt.event.ActionEvent evt) {
-      activeButtonActionPerformed(evt);
-    }
-  });
   gridBagConstraints = new java.awt.GridBagConstraints();
   gridBagConstraints.gridx = 0;
   gridBagConstraints.gridy = 2;
   gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
   connectionSettingsPanel.add(activeButton, gridBagConstraints);
 
-  aliveTimeoutLable.setText(bundle.getString("controlPanel.label_aliveTimeout.text")); // NOI18N
+  aliveTimeoutLable.setText(bundle.getString("ControlPanel.IdleAfter")); // NOI18N
   gridBagConstraints = new java.awt.GridBagConstraints();
   gridBagConstraints.gridx = 1;
   gridBagConstraints.gridy = 2;
@@ -489,7 +484,7 @@ public class ControlPanel
   gridBagConstraints.insets = new java.awt.Insets(0, 0, 3, 3);
   connectionSettingsPanel.add(aliveTimeoutTextField, gridBagConstraints);
 
-  disconnectOnTimeoutChkBox.setText(bundle.getString("controlPanel.checkBox_disconnectWhenIdle.text")); // NOI18N
+  disconnectOnTimeoutChkBox.setText(bundle.getString("ControlPanel.DisconnectOnTimeout")); // NOI18N
   disconnectOnTimeoutChkBox.addActionListener(new java.awt.event.ActionListener() {
     public void actionPerformed(java.awt.event.ActionEvent evt) {
       disconnectOnTimeoutChkBoxActionPerformed(evt);
@@ -502,7 +497,7 @@ public class ControlPanel
   gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
   connectionSettingsPanel.add(disconnectOnTimeoutChkBox, gridBagConstraints);
 
-  reconnectOnConnectionLossChkBox.setText(bundle.getString("controlPanel.checkBox_reconnectOnConnectionLoss.text")); // NOI18N
+  reconnectOnConnectionLossChkBox.setText(bundle.getString("ControlPanel.DisconnectOnConnectionLoss")); // NOI18N
   reconnectOnConnectionLossChkBox.addActionListener(new java.awt.event.ActionListener() {
     public void actionPerformed(java.awt.event.ActionEvent evt) {
       reconnectOnConnectionLossChkBoxActionPerformed(evt);
@@ -515,7 +510,7 @@ public class ControlPanel
   gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
   connectionSettingsPanel.add(reconnectOnConnectionLossChkBox, gridBagConstraints);
 
-  enableLoggingChkBox.setText(bundle.getString("controlPanel.checkBox_enableLogging.text")); // NOI18N
+  enableLoggingChkBox.setText(bundle.getString("ControlPanel.EnableLogging")); // NOI18N
   enableLoggingChkBox.addActionListener(new java.awt.event.ActionListener() {
     public void actionPerformed(java.awt.event.ActionEvent evt) {
       enableLoggingChkBoxActionPerformed(evt);
@@ -535,10 +530,10 @@ public class ControlPanel
   gridBagConstraints.weightx = 1.0;
   connectionSettingsPanel.add(connectionSettingsPanelFiller, gridBagConstraints);
 
-  setOrderPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, bundle.getString("controlPanel.panel_sendOrder.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+  setOrderPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, bundle.getString("NewOrderTelegramTitle"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
   setOrderPanel.setLayout(new java.awt.GridBagLayout());
 
-  destinationLabel.setText(bundle.getString("controlPanel.label_destination.text")); // NOI18N
+  destinationLabel.setText(bundle.getString("OrderDestination")); // NOI18N
   gridBagConstraints = new java.awt.GridBagConstraints();
   gridBagConstraints.gridx = 0;
   gridBagConstraints.gridy = 0;
@@ -556,7 +551,7 @@ public class ControlPanel
   gridBagConstraints.insets = new java.awt.Insets(0, 0, 3, 3);
   setOrderPanel.add(destinationComboBox, gridBagConstraints);
 
-  actionLabel.setText(bundle.getString("controlPanel.label_action.text")); // NOI18N
+  actionLabel.setText(bundle.getString("OrderAction")); // NOI18N
   gridBagConstraints = new java.awt.GridBagConstraints();
   gridBagConstraints.gridx = 0;
   gridBagConstraints.gridy = 1;
@@ -570,7 +565,7 @@ public class ControlPanel
   gridBagConstraints.insets = new java.awt.Insets(0, 0, 3, 3);
   setOrderPanel.add(actionComboBox, gridBagConstraints);
 
-  orderIdLabel.setText(bundle.getString("controlPanel.label_orderId.text")); // NOI18N
+  orderIdLabel.setText(bundle.getString("OrderID")); // NOI18N
   gridBagConstraints = new java.awt.GridBagConstraints();
   gridBagConstraints.gridx = 0;
   gridBagConstraints.gridy = 2;
@@ -587,7 +582,7 @@ public class ControlPanel
   gridBagConstraints.insets = new java.awt.Insets(0, 0, 3, 3);
   setOrderPanel.add(orderIdTextField, gridBagConstraints);
 
-  sendOrderButton.setText(bundle.getString("controlPanel.button_sendOrderRequest.text")); // NOI18N
+  sendOrderButton.setText(bundle.getString("SendNewOrder")); // NOI18N
   sendOrderButton.addActionListener(new java.awt.event.ActionListener() {
     public void actionPerformed(java.awt.event.ActionEvent evt) {
       sendOrderButtonActionPerformed(evt);
@@ -608,7 +603,7 @@ public class ControlPanel
   gridBagConstraints.weightx = 1.0;
   setOrderPanel.add(setOrderPanelFiller, gridBagConstraints);
 
-  repeatOrderPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, bundle.getString("controlPanel.panel_repeatOrder.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+  repeatOrderPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, bundle.getString("LastOrderTelegramTitle"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
   repeatOrderPanel.setMinimumSize(new java.awt.Dimension(199, 170));
 
   lastOrdersList.setModel(lastOrderListModel);
@@ -626,7 +621,7 @@ public class ControlPanel
 
   lastOrderDetailsPanel.setLayout(new java.awt.GridBagLayout());
 
-  destinationLabel1.setText(bundle.getString("controlPanel.label_destination.text")); // NOI18N
+  destinationLabel1.setText(bundle.getString("OrderDestination")); // NOI18N
   gridBagConstraints = new java.awt.GridBagConstraints();
   gridBagConstraints.gridx = 0;
   gridBagConstraints.gridy = 0;
@@ -644,7 +639,7 @@ public class ControlPanel
   gridBagConstraints.insets = new java.awt.Insets(0, 0, 3, 3);
   lastOrderDetailsPanel.add(lastDestinationTextField, gridBagConstraints);
 
-  actionLabel1.setText(bundle.getString("controlPanel.label_action.text")); // NOI18N
+  actionLabel1.setText(bundle.getString("OrderAction")); // NOI18N
   gridBagConstraints = new java.awt.GridBagConstraints();
   gridBagConstraints.gridx = 0;
   gridBagConstraints.gridy = 9;
@@ -662,7 +657,7 @@ public class ControlPanel
   gridBagConstraints.insets = new java.awt.Insets(0, 0, 3, 3);
   lastOrderDetailsPanel.add(lastActionTextField, gridBagConstraints);
 
-  lastOrderIdLabel.setText(bundle.getString("controlPanel.label_orderId.text")); // NOI18N
+  lastOrderIdLabel.setText(bundle.getString("OrderID")); // NOI18N
   gridBagConstraints = new java.awt.GridBagConstraints();
   gridBagConstraints.gridx = 0;
   gridBagConstraints.gridy = 11;
@@ -679,7 +674,7 @@ public class ControlPanel
   gridBagConstraints.insets = new java.awt.Insets(0, 0, 3, 3);
   lastOrderDetailsPanel.add(lastOrderIdTextField, gridBagConstraints);
 
-  repeatLastOrderButton.setText(bundle.getString("controlPanel.button_repeatLastOrder.text")); // NOI18N
+  repeatLastOrderButton.setText(bundle.getString("SendLastOrderAgain")); // NOI18N
   repeatLastOrderButton.setEnabled(false);
   repeatLastOrderButton.addActionListener(new java.awt.event.ActionListener() {
     public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -739,7 +734,7 @@ public class ControlPanel
       .addContainerGap(85, Short.MAX_VALUE))
   );
 
-  getAccessibleContext().setAccessibleName(bundle.getString("controlPanel.accessibleName")); // NOI18N
+  getAccessibleContext().setAccessibleName(bundle.getString("ControlsPanelTitle")); // NOI18N
   }// </editor-fold>//GEN-END:initComponents
 
   private void repeatLastOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repeatLastOrderButtonActionPerformed
@@ -856,10 +851,6 @@ public class ControlPanel
   private void enableLoggingChkBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enableLoggingChkBoxActionPerformed
     sendAdapterCommand(new SetLoggingEnabledCommand(enableLoggingChkBox.isSelected()));
   }//GEN-LAST:event_enableLoggingChkBoxActionPerformed
-
-  private void activeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activeButtonActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_activeButtonActionPerformed
 
   /**
    * Updates the panel containing informations about the last order sent with the selected order

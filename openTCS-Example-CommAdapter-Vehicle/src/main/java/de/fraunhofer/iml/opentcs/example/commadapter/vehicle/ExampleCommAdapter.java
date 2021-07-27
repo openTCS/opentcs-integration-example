@@ -25,7 +25,6 @@ import de.fraunhofer.iml.opentcs.example.common.telegrams.TelegramSender;
 import io.netty.channel.ChannelHandler;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import java.beans.PropertyChangeEvent;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -108,7 +107,7 @@ public class ExampleCommAdapter
                             OrderMapper orderMapper,
                             ExampleAdapterComponentsFactory componentsFactory,
                             @KernelExecutor ExecutorService kernelExecutor) {
-    super(new ExampleProcessModel(vehicle), 3, 2, LoadAction.CHARGE);
+    super(new ExampleProcessModel(vehicle), 3, 2, LoadAction.CHARGE, kernelExecutor);
     this.orderMapper = requireNonNull(orderMapper, "orderMapper");
     this.componentsFactory = requireNonNull(componentsFactory, "componentsFactory");
     this.kernelExecutor = requireNonNull(kernelExecutor, "kernelExecutor");
@@ -220,12 +219,6 @@ public class ExampleCommAdapter
                        ExampleProcessModel.Attribute.PERIOD_STATE_REQUESTS_INTERVAL.name())) {
       stateRequesterTask.setRequestInterval(getProcessModel().getStateRequestInterval());
     }
-  }
-
-  @Override
-  @Deprecated
-  protected List<org.opentcs.drivers.vehicle.VehicleCommAdapterPanel> createAdapterPanels() {
-    return new ArrayList<>();
   }
 
   @Override

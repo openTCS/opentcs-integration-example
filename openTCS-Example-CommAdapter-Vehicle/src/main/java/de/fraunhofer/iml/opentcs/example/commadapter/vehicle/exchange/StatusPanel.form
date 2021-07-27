@@ -3,7 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AccessibilityProperties>
     <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-      <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="statusPanel.accessibleName" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+      <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="StatusPanelTitle" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
     </Property>
   </AccessibilityProperties>
   <AuxValues>
@@ -26,7 +26,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Periodic state requests">
-              <ResourceString PropertyName="titleX" bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="statusPanel.panel_periodicStateRequests.border.title" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+              <ResourceString PropertyName="titleX" bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="PeriodicStateRequestsTitle" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
               <Font PropertyName="font" name="Tahoma" size="11" style="1"/>
             </TitledBorder>
           </Border>
@@ -47,7 +47,7 @@
           <Properties>
             <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-              <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="statusPanel.checkBox_enablePeriodicGetState.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+              <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="EnablePeriodicStateRequests" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
           </Properties>
           <Events>
@@ -62,7 +62,7 @@
         <Component class="javax.swing.JLabel" name="labelGetStateInterval">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-              <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="statusPanel.label_requestStateInterval.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+              <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="StateRequestInterval" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
           </Properties>
           <Constraints>
@@ -94,7 +94,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Manual state requests">
-              <ResourceString PropertyName="titleX" bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="statusPanel.panel_manualStateRequest.border.title" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+              <ResourceString PropertyName="titleX" bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="ManualStateRequestsTitle" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
               <Font PropertyName="font" name="Tahoma" size="11" style="1"/>
             </TitledBorder>
           </Border>
@@ -111,7 +111,7 @@
         <Component class="javax.swing.JButton" name="buttonGetState">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-              <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="statusPanel.button_sendStateRequest.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+              <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="SendStateRequest" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -150,7 +150,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                 <TitledBorder title="Last reported state">
-                  <ResourceString PropertyName="titleX" bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="statusPanel.panel_telegramContent.border.title" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                  <ResourceString PropertyName="titleX" bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="LastReportedState" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                   <Font PropertyName="font" name="Tahoma" size="11" style="1"/>
                 </TitledBorder>
               </Border>
@@ -167,7 +167,7 @@
             <Component class="javax.swing.JLabel" name="labelStateTeleCount">
               <Properties>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                  <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="controlPanel.label_orderId.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                  <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="OrderID" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -198,7 +198,7 @@
             <Component class="javax.swing.JLabel" name="labelStateOS">
               <Properties>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                  <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="statusPanel.label_operationState.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                  <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="OperationState" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -229,7 +229,7 @@
             <Component class="javax.swing.JLabel" name="labelStateLS">
               <Properties>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                  <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="statusPanel.label_loadState.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                  <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="LoadState" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -260,7 +260,7 @@
             <Component class="javax.swing.JLabel" name="labelStateCRP">
               <Properties>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                  <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="statusPanel.label_currentPoint.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                  <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="currentPoint" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -298,7 +298,7 @@
             <Component class="javax.swing.JLabel" name="labelLastOrderID">
               <Properties>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                  <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="statusPanel.label_lastFinishedOrderId.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                  <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="LastFinishedOrder" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -329,7 +329,7 @@
             <Component class="javax.swing.JLabel" name="labelCurrOrderID">
               <Properties>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                  <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="statusPanel.label_currentOrderId.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                  <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="currentOrderID" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -360,7 +360,7 @@
             <Component class="javax.swing.JLabel" name="labelLastRcvdOrderID">
               <Properties>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                  <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="statusPanel.label_lastReceivedOrderId.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                  <ResourceString bundle="de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle.properties" key="lastReceivedOrderID" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                 </Property>
               </Properties>
               <Constraints>

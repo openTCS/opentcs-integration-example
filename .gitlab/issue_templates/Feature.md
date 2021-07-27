@@ -18,10 +18,10 @@
 
 ## Rahmenbedingungen für die Bearbeitung
 
-* An diesem Thema kann ab sofort gearbeitet werden / kann erst gearbeitet werden, wenn Ticket #TICKETNR abgeschlossen ist.
-* Die Bearbeitung kann direkt auf dem Haupt-Branch erfolgen / ist auf einem separaten Branch mit Merge Request durchzuführen, unter Beachtung folgender Regeln:
+* An diesem Thema kann erst gearbeitet werden, wenn Ticket #TICKETNR abgeschlossen ist.
+* Die Bearbeitung ist auf einem separaten Branch mit Merge Request durchzuführen, unter Beachtung folgender Regeln:
   * Branch _lokal_ erstellen und nach dem Muster `feature/sinnvoller_name` benennen!
-  * Merge Request für diesen Branch _manuell_ erstellen und dieses Ticket darin referenzieren, z.B. mit `/closes #TICKETNR`!
+  * Merge Request für diesen Branch _manuell_ erstellen und dieses Ticket darin referenzieren, z.B. mit `Closes #TICKETNR`!
   * Titel des Merge Request _in Englisch_ halten, denn er wird Bestandteil des Merge Commit!
 * Nach der Bearbeitung (und ggfs. vor dem Merge) sollte ein Review geschehen durch bzw. mit @USERNAME und/oder @USERNAME.
 

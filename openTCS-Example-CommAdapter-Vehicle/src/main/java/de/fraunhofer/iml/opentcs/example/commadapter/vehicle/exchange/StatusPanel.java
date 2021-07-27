@@ -213,12 +213,12 @@ public class StatusPanel
     setLayout(new java.awt.GridBagLayout());
 
     java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("de/fraunhofer/iml/opentcs/example/commadapter/vehicle/Bundle"); // NOI18N
-    panelPeriodicStateRequests.setBorder(javax.swing.BorderFactory.createTitledBorder(null, bundle.getString("statusPanel.panel_periodicStateRequests.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+    panelPeriodicStateRequests.setBorder(javax.swing.BorderFactory.createTitledBorder(null, bundle.getString("PeriodicStateRequestsTitle"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
     panelPeriodicStateRequests.setMaximumSize(new java.awt.Dimension(2147483647, 70));
     panelPeriodicStateRequests.setLayout(new java.awt.GridBagLayout());
 
     chkBoxEnablePeriodicGetState.setSelected(true);
-    chkBoxEnablePeriodicGetState.setText(bundle.getString("statusPanel.checkBox_enablePeriodicGetState.text")); // NOI18N
+    chkBoxEnablePeriodicGetState.setText(bundle.getString("EnablePeriodicStateRequests")); // NOI18N
     chkBoxEnablePeriodicGetState.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         chkBoxEnablePeriodicGetStateActionPerformed(evt);
@@ -229,7 +229,7 @@ public class StatusPanel
     gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
     panelPeriodicStateRequests.add(chkBoxEnablePeriodicGetState, gridBagConstraints);
 
-    labelGetStateInterval.setText(bundle.getString("statusPanel.label_requestStateInterval.text")); // NOI18N
+    labelGetStateInterval.setText(bundle.getString("StateRequestInterval")); // NOI18N
     gridBagConstraints = new java.awt.GridBagConstraints();
     gridBagConstraints.gridx = 0;
     gridBagConstraints.gridy = 1;
@@ -254,10 +254,10 @@ public class StatusPanel
     gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
     add(panelPeriodicStateRequests, gridBagConstraints);
 
-    panelManualStateRequest.setBorder(javax.swing.BorderFactory.createTitledBorder(null, bundle.getString("statusPanel.panel_manualStateRequest.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+    panelManualStateRequest.setBorder(javax.swing.BorderFactory.createTitledBorder(null, bundle.getString("ManualStateRequestsTitle"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
     panelManualStateRequest.setLayout(new java.awt.CardLayout());
 
-    buttonGetState.setText(bundle.getString("statusPanel.button_sendStateRequest.text")); // NOI18N
+    buttonGetState.setText(bundle.getString("SendStateRequest")); // NOI18N
     buttonGetState.setEnabled(false);
     buttonGetState.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,10 +277,10 @@ public class StatusPanel
     panelState.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
     panelState.setLayout(new java.awt.BorderLayout());
 
-    panelTelegramContent.setBorder(javax.swing.BorderFactory.createTitledBorder(null, bundle.getString("statusPanel.panel_telegramContent.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+    panelTelegramContent.setBorder(javax.swing.BorderFactory.createTitledBorder(null, bundle.getString("LastReportedState"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
     panelTelegramContent.setLayout(new java.awt.GridBagLayout());
 
-    labelStateTeleCount.setText(bundle.getString("controlPanel.label_orderId.text")); // NOI18N
+    labelStateTeleCount.setText(bundle.getString("OrderID")); // NOI18N
     gridBagConstraints = new java.awt.GridBagConstraints();
     gridBagConstraints.gridx = 0;
     gridBagConstraints.gridy = 0;
@@ -302,7 +302,7 @@ public class StatusPanel
     gridBagConstraints.insets = new java.awt.Insets(0, 0, 3, 0);
     panelTelegramContent.add(textFieldStateTeleCount, gridBagConstraints);
 
-    labelStateOS.setText(bundle.getString("statusPanel.label_operationState.text")); // NOI18N
+    labelStateOS.setText(bundle.getString("OperationState")); // NOI18N
     gridBagConstraints = new java.awt.GridBagConstraints();
     gridBagConstraints.gridx = 0;
     gridBagConstraints.gridy = 1;
@@ -323,7 +323,7 @@ public class StatusPanel
     gridBagConstraints.insets = new java.awt.Insets(0, 0, 3, 0);
     panelTelegramContent.add(textFieldStateOS, gridBagConstraints);
 
-    labelStateLS.setText(bundle.getString("statusPanel.label_loadState.text")); // NOI18N
+    labelStateLS.setText(bundle.getString("LoadState")); // NOI18N
     gridBagConstraints = new java.awt.GridBagConstraints();
     gridBagConstraints.gridx = 2;
     gridBagConstraints.gridy = 1;
@@ -345,7 +345,7 @@ public class StatusPanel
     gridBagConstraints.insets = new java.awt.Insets(0, 0, 3, 0);
     panelTelegramContent.add(textFieldStateLS, gridBagConstraints);
 
-    labelStateCRP.setText(bundle.getString("statusPanel.label_currentPoint.text")); // NOI18N
+    labelStateCRP.setText(bundle.getString("currentPoint")); // NOI18N
     gridBagConstraints = new java.awt.GridBagConstraints();
     gridBagConstraints.gridx = 4;
     gridBagConstraints.gridy = 1;
@@ -368,7 +368,7 @@ public class StatusPanel
     panelTelegramContent.add(textFieldStateCRP, gridBagConstraints);
     panelTelegramContent.add(fillingLabel2, new java.awt.GridBagConstraints());
 
-    labelLastOrderID.setText(bundle.getString("statusPanel.label_lastFinishedOrderId.text")); // NOI18N
+    labelLastOrderID.setText(bundle.getString("LastFinishedOrder")); // NOI18N
     gridBagConstraints = new java.awt.GridBagConstraints();
     gridBagConstraints.gridx = 0;
     gridBagConstraints.gridy = 2;
@@ -390,7 +390,7 @@ public class StatusPanel
     gridBagConstraints.insets = new java.awt.Insets(0, 0, 3, 0);
     panelTelegramContent.add(textFieldLastOrderID, gridBagConstraints);
 
-    labelCurrOrderID.setText(bundle.getString("statusPanel.label_currentOrderId.text")); // NOI18N
+    labelCurrOrderID.setText(bundle.getString("currentOrderID")); // NOI18N
     gridBagConstraints = new java.awt.GridBagConstraints();
     gridBagConstraints.gridx = 2;
     gridBagConstraints.gridy = 2;
@@ -412,7 +412,7 @@ public class StatusPanel
     gridBagConstraints.insets = new java.awt.Insets(0, 0, 3, 0);
     panelTelegramContent.add(textFieldCurrOrderID, gridBagConstraints);
 
-    labelLastRcvdOrderID.setText(bundle.getString("statusPanel.label_lastReceivedOrderId.text")); // NOI18N
+    labelLastRcvdOrderID.setText(bundle.getString("lastReceivedOrderID")); // NOI18N
     gridBagConstraints = new java.awt.GridBagConstraints();
     gridBagConstraints.gridx = 4;
     gridBagConstraints.gridy = 2;
@@ -461,7 +461,7 @@ public class StatusPanel
     gridBagConstraints.weighty = 1.0;
     add(fillingLabel1, gridBagConstraints);
 
-    getAccessibleContext().setAccessibleName(bundle.getString("statusPanel.accessibleName")); // NOI18N
+    getAccessibleContext().setAccessibleName(bundle.getString("StatusPanelTitle")); // NOI18N
   }// </editor-fold>//GEN-END:initComponents
 
     private void chkBoxEnablePeriodicGetStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkBoxEnablePeriodicGetStateActionPerformed
@@ -480,7 +480,7 @@ public class StatusPanel
           chkBoxEnablePeriodicGetState.setSelected(false);
           txtGetStateInterval.setEditable(true);
           // Notify the user about the invalid input.
-          JOptionPane.showMessageDialog(this, resourceBundle.getString("statusPanel.optionPane_invalidRequestInterval.message"));
+          JOptionPane.showMessageDialog(this, resourceBundle.getString("InvalidRequestIntervalMsg"));
         }
       }
       else {

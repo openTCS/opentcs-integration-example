@@ -73,12 +73,6 @@ public class ExampleCommAdapterFactory
   }
 
   @Override
-  @Deprecated
-  public String getAdapterDescription() {
-    return getDescription().getDescription();
-  }
-
-  @Override
   public boolean providesAdapterFor(Vehicle vehicle) {
     requireNonNull(vehicle, "vehicle");
 
