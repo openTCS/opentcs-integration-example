@@ -1,0 +1,24 @@
+apply from: "${rootDir}/gradle/dependency-versions.gradle"
+apply from: "${rootDir}/gradle/java-project.gradle"
+apply from: "${rootDir}/gradle/java-artifacts.gradle"
+apply from: "${rootDir}/gradle/java-codequality.gradle"
+apply from: "${rootDir}/gradle/guice-project.gradle"
+apply from: "${rootDir}/gradle/maven-publishing.gradle"
+apply from: "${rootDir}/gradle/license-headers.gradle"
+apply plugin: 'org.kordamp.gradle.stats'
+
+dependencies {
+  compile project(':openTCS-Example-Common')
+  
+  compile group: 'org.opentcs', name: 'opentcs-api-injection', version: openTcsBaselineVersion
+  compileOnly group: 'org.opentcs', name: 'opentcs-api-injection', version: openTcsBaselineVersion, classifier: 'sources'
+
+  compile group: 'org.opentcs', name: 'opentcs-common', version: openTcsBaselineVersion
+  compileOnly group: 'org.opentcs', name: 'opentcs-common', version: openTcsBaselineVersion, classifier: 'sources'
+  
+  compile group: 'org.opentcs.contrib', name: 'opentcs-contrib-tcp-netty', version: '0.13.0'
+  compileOnly group: 'org.opentcs.contrib', name: 'opentcs-contrib-tcp-netty', version: '0.13.0', classifier: 'sources'
+  
+  compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
+  compileOnly group: 'commons-codec', name: 'commons-codec', version: '1.10', classifier: 'sources'
+}

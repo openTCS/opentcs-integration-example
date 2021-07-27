@@ -1,0 +1,9 @@
+.gradle/
+/build/
+/.nb-gradle/
+openTCS-Example-Documentation/build/
+openTCS-Example-Kernel/build/
+openTCS-Example-KernelControlCenter/build/
+openTCS-Example-PlantOverview/build/
+openTCS-Example-Common/build/
+openTCS-Example-CommAdapter-Vehicle/build/

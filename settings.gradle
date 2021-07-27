@@ -1,0 +1,8 @@
+rootProject.name = 'openTCS-Example'
+
+include 'openTCS-Example-Kernel'
+include 'openTCS-Example-KernelControlCenter'
+include 'openTCS-Example-PlantOverview'
+include 'openTCS-Example-Documentation'
+include 'openTCS-Example-Common'
+include 'openTCS-Example-CommAdapter-Vehicle'

@@ -1,0 +1,27 @@
+apply from: "${rootDir}/gradle/dependency-versions.gradle"
+apply from: "${rootDir}/gradle/java-project.gradle"
+apply from: "${rootDir}/gradle/java-artifacts.gradle"
+apply from: "${rootDir}/gradle/java-codequality.gradle"
+apply from: "${rootDir}/gradle/maven-publishing.gradle"
+apply from: "${rootDir}/gradle/license-headers.gradle"
+apply plugin: 'org.kordamp.gradle.stats'
+
+dependencies {
+  compile group: 'org.opentcs', name: 'opentcs-api-base', version: openTcsBaselineVersion
+  compileOnly group: 'org.opentcs', name: 'opentcs-api-base', version: openTcsBaselineVersion, classifier: 'sources'
+  
+  compile group: 'org.opentcs', name: 'opentcs-api-injection', version: openTcsBaselineVersion
+  compileOnly group: 'org.opentcs', name: 'opentcs-api-injection', version: openTcsBaselineVersion, classifier: 'sources'
+}
+
+processResources.doLast {
+  // Write a properties file with the customization build version and date.
+  def props = new Properties()
+  props.setProperty('opentcs.customization.name', 'Example')
+  props.setProperty('opentcs.customization.version', version)
+  props.setProperty('opentcs.customization.builddate', project.ext.buildDate)
+  
+  new File(sourceSets.main.output.resourcesDir, 'opentcs-customization.properties').withWriter() {
+    props.store(it, null)
+  }
+}
