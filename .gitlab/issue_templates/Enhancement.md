@@ -1,33 +1,27 @@
-## Verbesserung
+## Enhancement
 
-### Bisheriges Verhalten
+<!-- A template to be used for proposing enhancements to existing functionality -->
+
+### Current behaviour
+
+<!-- The behaviour to be improved (as it is now) -->
 
 ...
 
-### Besseres (Ziel-)Verhalten
+### Improved behaviour
+
+<!-- What should be improved about the current behaviour, and how -->
 
 ...
 
-### Bei der Umsetzung zu erledigende Teilarbeiten
+### Acceptance criteria
 
-<!-- Liste nach Bedarf anpassen - so lang wie nötig, so kurz wie möglich! -->
+<!-- Important criteria for the issue to be considered resolved -->
 
-- [ ] Teilarbeit 1
-- [ ] Teilarbeit 2
-- [ ] ...
-- [ ] Abdecken neuer Klassen/Methoden durch Unit-Tests, um korrektes Verhalten abzusichern (sofern sinnvoll)
-- [ ] Integrieren neuer Konfigurationsabschnitte in die Dokumentation für Benutzer (sofern vorhanden)
-- [ ] Erweitern/Aktualisieren der Dokumentation für Benutzer und/oder Entwickler (sofern sinnvoll)
-- [ ] Anpassen des Changelog für das nächste Release (sofern sinnvoll)
-
-## Rahmenbedingungen für die Bearbeitung
-
-* An diesem Thema kann erst gearbeitet werden, wenn Ticket #TICKETNR abgeschlossen ist.
-* Die Bearbeitung ist auf einem separaten Branch mit Merge Request durchzuführen, unter Beachtung folgender Regeln:
-  * Branch _lokal_ erstellen und nach dem Muster `enhancement/sinnvoller_name` benennen!
-  * Merge Request für diesen Branch _manuell_ erstellen und dieses Ticket darin referenzieren, z.B. mit `Closes #TICKETNR`!
-  * Titel des Merge Request _in Englisch_ halten, denn er wird Bestandteil des Merge Commit!
-* Nach der Bearbeitung (und ggfs. vor dem Merge) sollte ein Review geschehen durch bzw. mit @USERNAME und/oder @USERNAME.
+* Behaviour improved
+* New tests added or existing tests updated to help prevent defects of the changed code
+* User documentation covers changed behaviour
+* Developer documentation covers new feature
+* Changelog entry added
 
 /label ~enhancement
-<!-- /milestone %"xyz"  -->

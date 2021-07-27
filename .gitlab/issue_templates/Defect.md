@@ -1,43 +1,43 @@
-## Fehlerbeschreibung
+## Defect
 
-Beobachtet mit Release x.y.z / Revision HASH.
+<!-- A template to be used for reporting bugs/defects/problems -->
 
-### Schritte zum Reproduzieren
+### Affected version
+
+<!-- Name the affected version, i.e. "Release x.y.z" or "Revision <HASH>" -->
+
+### Steps to reproduce
+
+<!-- How can the incorrect behaviour be reproduced? -->
 
 1. ...
-1. ...
-1. ...
+2. ...
+3. ...
 
-### Erwartetes Verhalten
+### Expected behaviour
+
+<!-- What would be the correct/expected behaviour? -->
 
 ...
 
-### Tatsächliches Verhalten
+### Actual behaviour
+
+<!-- What behaviour can actually be observed instead of the correct behaviour? -->
 
 ...
 
-### Zusätzliche Details (Logs, Screenshots, etc.)
+### Additional information (logs, screenshots etc.)
+
+<!-- Other data that can help with fixing the defect, e.g. logs, screenshots etc. -->
 
 ...
 
-### Bei der Umsetzung zu erledigende Teilarbeiten
+### Acceptance criteria
 
-<!-- Liste nach Bedarf anpassen - so lang wie nötig, so kurz wie möglich! -->
+<!-- Important criteria for the issue to be considered resolved -->
 
-- [ ] Teilarbeit 1
-- [ ] Teilarbeit 2
-- [ ] ...
-- [ ] Abdecken vorher fehlerhafter Klassen/Methoden durch Unit-Tests, um zukünftig korrektes Verhalten sicherzustellen (sofern sinnvoll)
-- [ ] Anpassen des Changelog für das nächste Release (sofern sinnvoll)
-
-## Rahmenbedingungen für die Bearbeitung
-
-* An diesem Thema kann erst gearbeitet werden, wenn Ticket #TICKETNR abgeschlossen ist.
-* Die Bearbeitung ist auf einem separaten Branch mit Merge Request durchzuführen, unter Beachtung folgender Regeln:
-  * Branch _lokal_ erstellen und nach dem Muster `defect/sinnvoller_name` benennen!
-  * Merge Request für diesen Branch _manuell_ erstellen und dieses Ticket darin referenzieren, z.B. mit `Closes #TICKETNR`!
-  * Titel des Merge Request _in Englisch_ halten, denn er wird Bestandteil des Merge Commit!
-* Nach der Bearbeitung (und ggfs. vor dem Merge) sollte ein Review geschehen durch bzw. mit @USERNAME und/oder @USERNAME.
+* Actual behaviour corrected
+* New tests added or existing tests improved to help prevent future defects
+* Changelog entry added
 
 /label ~defect
-<!-- /milestone %"xyz"  -->
