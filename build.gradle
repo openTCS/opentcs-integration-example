@@ -46,7 +46,10 @@ distributions {
       project(':openTCS-Example-KernelControlCenter').ext.collectableDistDir
     }
     contents.from {
-      project(':openTCS-Example-PlantOverview').ext.collectableDistDir
+      project(':openTCS-Example-ModelEditor').ext.collectableDistDir
+    }
+    contents.from {
+      project(':openTCS-Example-OperationsDesk').ext.collectableDistDir
     }
     contents.from {
       project(':openTCS-Example-Documentation').ext.collectableDistDir
@@ -57,7 +60,8 @@ distributions {
 task subDists {
   dependsOn(':openTCS-Example-Kernel:installDist')
   dependsOn(':openTCS-Example-KernelControlCenter:installDist')
-  dependsOn(':openTCS-Example-PlantOverview:installDist')
+  dependsOn(':openTCS-Example-ModelEditor:installDist')
+  dependsOn(':openTCS-Example-OperationsDesk:installDist')
   dependsOn(':openTCS-Example-Documentation:installDist')
 }
 
