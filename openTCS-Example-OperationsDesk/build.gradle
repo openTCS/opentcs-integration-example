@@ -39,7 +39,7 @@ distributions {
           
         includeEmptyDirs false
       }
-      from "${sourceSets.main.resources.srcDirs[0]}/de/fraunhofer/iml/opentcs/example/operationsdesk/distribution"
+      from "${sourceSets.main.resources.srcDirs[0]}/com/example/operationsdesk/distribution"
     }
   }
 }

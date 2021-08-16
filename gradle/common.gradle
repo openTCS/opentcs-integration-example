@@ -19,7 +19,7 @@ if (!(project.hasProperty("NO_BUILD_NUMBER")
 
 project.ext.buildDate = new Date().format('yyyy-MM-dd HH:mm:ss')
 
-group = 'de.fraunhofer.iml.opentcs.example'
+group = 'com.example'
 
 task createFolders(description: 'Creates the source folders if they do not exist.') doLast {
   sourceSets*.allSource*.srcDirs*.each { File srcDir ->

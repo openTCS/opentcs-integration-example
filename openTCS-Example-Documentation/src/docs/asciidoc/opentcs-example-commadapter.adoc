@@ -50,7 +50,7 @@ As TCP already ensures correct transmission of the data sent, the checksum prima
 [source,java]
 .Example: Implementation in the vehicle driver
 ----
-include::{common-javaSrc}/de/fraunhofer/iml/opentcs/example/common/telegrams/Telegram.java[tags=documentation_checksumComp]
+include::{common-javaSrc}/com/example/common/telegrams/Telegram.java[tags=documentation_checksumComp]
 ----
 
 === Processing telegrams in TCP streams

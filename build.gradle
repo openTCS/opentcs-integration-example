@@ -110,7 +110,7 @@ build {
 
 // tag::cloneTask
 task cloneProject(type: JavaExec) {
-  main = 'de.fraunhofer.iml.opentcs.scripts.CloneScript'
+  main = 'org.opentcs.scripts.CloneScript'
  
   classpath = sourceSets.main.runtimeClasspath
  
