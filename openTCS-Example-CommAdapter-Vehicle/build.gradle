@@ -11,14 +11,7 @@ dependencies {
   compile project(':openTCS-Example-Common')
   
   compile group: 'org.opentcs', name: 'opentcs-api-injection', version: openTcsBaselineVersion
-  compileOnly group: 'org.opentcs', name: 'opentcs-api-injection', version: openTcsBaselineVersion, classifier: 'sources'
-
   compile group: 'org.opentcs', name: 'opentcs-common', version: openTcsBaselineVersion
-  compileOnly group: 'org.opentcs', name: 'opentcs-common', version: openTcsBaselineVersion, classifier: 'sources'
-  
   compile group: 'org.opentcs.contrib', name: 'opentcs-contrib-tcp-netty', version: '0.13.0'
-  compileOnly group: 'org.opentcs.contrib', name: 'opentcs-contrib-tcp-netty', version: '0.13.0', classifier: 'sources'
-  
   compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
-  compileOnly group: 'commons-codec', name: 'commons-codec', version: '1.10', classifier: 'sources'
 }

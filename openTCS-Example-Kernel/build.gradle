@@ -22,7 +22,6 @@ dependencies {
   compile project(':openTCS-Example-CommAdapter-Vehicle')
 
   compile group: 'org.opentcs', name: 'opentcs-kernel', version: openTcsBaselineVersion
-  compileOnly group: 'org.opentcs', name: 'opentcs-kernel', version: openTcsBaselineVersion, classifier: 'sources'
   kernelJar group: 'org.opentcs', name: 'opentcs-kernel', version: openTcsBaselineVersion, ext: 'jar'
 }
 
@@ -31,12 +30,12 @@ distributions {
     contents {
       from (zipTree(configurations.kernelJar.singleFile)) {
         include 'org/opentcs/kernel/distribution/**'
-          
+
         eachFile { file ->
           // Remove the top-level folders. We only want the content of '/distribution'
           file.path = file.path.replaceFirst("(.*)/distribution", "")
         }
-          
+
         includeEmptyDirs false
       }
       from "${sourceSets.main.resources.srcDirs[0]}/com/example/kernel/distribution"

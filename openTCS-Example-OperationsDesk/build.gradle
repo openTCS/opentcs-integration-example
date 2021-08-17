@@ -22,7 +22,6 @@ dependencies {
   compile project(':openTCS-Example-Common')
   
   compile group: 'org.opentcs', name: 'opentcs-operationsdesk', version: openTcsBaselineVersion
-  compileOnly group: 'org.opentcs', name: 'opentcs-operationsdesk', version: openTcsBaselineVersion, classifier: 'sources'
   plantoverviewJar group: 'org.opentcs', name: 'opentcs-operationsdesk', version: openTcsBaselineVersion, ext: 'jar'
 }
 
@@ -31,28 +30,17 @@ distributions {
     contents {
       from (zipTree(configurations.plantoverviewJar.singleFile)) {
         include 'org/opentcs/operationsdesk/distribution/**'
-          
+
         eachFile { file ->
           // Remove the top-level folders. We only want the content of '/distribution'
           file.path = file.path.replaceFirst("(.*)/distribution", "")
         }
-          
+
         includeEmptyDirs false
       }
       from "${sourceSets.main.resources.srcDirs[0]}/com/example/operationsdesk/distribution"
     }
   }
-}
-
-compileJava {
-  options.compilerArgs << "-Xlint:all"
-  options.compilerArgs << "-Xlint:-serial"
-  options.compilerArgs << "-Xlint:-rawtypes"
-  options.compilerArgs << "-Xlint:-unchecked"
-}
-
-compileTestJava {
-  options.compilerArgs << "-Xlint:all"
 }
 
 // For now, we're using hand-crafted start scripts, so disable the application
@@ -70,9 +58,7 @@ run {
                     'sun.java2d.d3d':'false',\
                     'opentcs.base':'.',\
                     'opentcs.home':'.',\
-                    'opentcs.cfg4j.reload.interval':'10000',\
-                    'org.opentcs.util.configuration.xml.file':'./config/openTCS-config.xml',\
-                    'org.opentcs.util.configuration.saveonexit':'true'])
+                    'opentcs.cfg4j.reload.interval':'10000'])
   jvmArgs('-XX:-OmitStackTraceInFastThrow',\
           '-splash:bin/splash-image.gif')
 }

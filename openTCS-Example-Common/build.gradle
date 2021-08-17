@@ -8,10 +8,7 @@ apply plugin: 'org.kordamp.gradle.stats'
 
 dependencies {
   compile group: 'org.opentcs', name: 'opentcs-api-base', version: openTcsBaselineVersion
-  compileOnly group: 'org.opentcs', name: 'opentcs-api-base', version: openTcsBaselineVersion, classifier: 'sources'
-  
   compile group: 'org.opentcs', name: 'opentcs-api-injection', version: openTcsBaselineVersion
-  compileOnly group: 'org.opentcs', name: 'opentcs-api-injection', version: openTcsBaselineVersion, classifier: 'sources'
 }
 
 processResources.doLast {
