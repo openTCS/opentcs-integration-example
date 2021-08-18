@@ -1,12 +1,15 @@
 # openTCS integration project example
 
-This allows to easily create a skeleton of a new openTCS integration project.
+This template allows to easily create a skeleton of a new openTCS integration project.
+Which openTCS release it is based on is defined in [gradle/dependency-versions.gradle](gradle/dependency-versions.gradle).
+(Usually, this should be the latest release.)
 
 ## Recommended usage
 
-`gradlew cloneProject <-PintegrationName=SomeName> <-PclassPrefix=SomePrefix>`
-
-The result will be a new integration project in the `build/` directory.
+1. Run `gradlew cloneProject <-PintegrationName=SomeName> <-PclassPrefix=SomePrefix>`.
+   The result will be a new integration project skeleton in the `build/` directory.
+2. Copy the newly created project skeleton somewhere else to work on it.
+   (The `build/` directory will be deleted whenever `gradlew clean` is run, which would also delete your project.)
 
 ## Licensing
 
