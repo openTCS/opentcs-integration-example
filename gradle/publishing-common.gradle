@@ -1,0 +1,18 @@
+apply plugin: 'maven-publish'
+
+publishing {
+  repositories {
+    maven {
+      name = "deploy-repo"
+      url = project.hasProperty('DEPLOY_REPO_URL') ? project.property('DEPLOY_REPO_URL') : ''
+
+      credentials(HttpHeaderCredentials) {
+        name = 'Job-Token'
+        value = System.getenv("CI_JOB_TOKEN")
+      }
+      authentication {
+        header(HttpHeaderAuthentication)
+      }
+    }
+  }
+}

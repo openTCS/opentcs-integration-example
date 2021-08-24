@@ -197,7 +197,7 @@ public class OrderRequest
     /**
      * Maps the given {@code actionString} to an order action.
      *
-     * @param actionString
+     * @param actionString the string to map.
      * @return The action associated with the {@code actionString}.
      * Returns {@link #NONE} if there isn't any action associated with the {@code actionString}.
      */

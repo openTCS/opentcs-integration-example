@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Checks if the incoming data was sent by the {@link APTVCommAdapter}.
+ * Checks if the incoming data was sent by the comm adapter.
  *
  * @author Martin Grzenia (Fraunhofer IML)
  */

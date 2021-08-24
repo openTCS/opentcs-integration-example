@@ -209,7 +209,7 @@ public class VehicleSimulator
   /**
    * Starts the simulation of the vehicle.
    *
-   * @param args
+   * @param args main function args
    */
   public static void main(String[] args) {
     VehicleSimulator simulator = new VehicleSimulator();

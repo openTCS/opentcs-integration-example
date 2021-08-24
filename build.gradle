@@ -20,6 +20,9 @@ apply plugin: 'distribution'
 apply plugin: 'groovy'
 
 apply from: "${rootDir}/gradle/common.gradle"
+apply from: "${rootDir}/gradle/publishing-common.gradle"
+
+evaluationDependsOnChildren()
 
 repositories {
   jcenter();
@@ -32,9 +35,8 @@ dependencies {
 
 subprojects {
   apply from: rootProject.file('gradle/common.gradle')
+  apply from: rootProject.file('gradle/publishing-java.gradle')
 }
-
-evaluationDependsOnChildren()
 
 distributions {
   main {
@@ -126,3 +128,18 @@ task cloneProject(type: JavaExec) {
   args integrationName, classPrefix
 }
 // tag::cloneTask
+
+publish.dependsOn subprojects*.publish
+
+publishing {
+  publications {
+    maven(MavenPublication) {
+      artifact distZip
+      artifact distSrcZip
+
+      pom {
+        artifactId = 'distribution'
+      }
+    }
+  }
+}
