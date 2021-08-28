@@ -22,9 +22,9 @@ import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import org.opentcs.contrib.tcp.netty.ClientEntry;
-import org.opentcs.contrib.tcp.netty.ConnectionEventListener;
-import org.opentcs.contrib.tcp.netty.TcpServerChannelManager;
+import org.opentcs.contrib.communication.tcp.ClientEntry;
+import org.opentcs.contrib.communication.tcp.ConnectionEventListener;
+import org.opentcs.contrib.communication.tcp.TcpServerChannelManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

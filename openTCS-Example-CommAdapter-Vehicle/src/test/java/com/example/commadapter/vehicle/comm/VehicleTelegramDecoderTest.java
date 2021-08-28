@@ -30,7 +30,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import org.opentcs.contrib.tcp.netty.ConnectionEventListener;
+import org.opentcs.contrib.communication.tcp.ConnectionEventListener;
 
 /**
  * Test cases for the {@link VehicleTelegramDecoder}.

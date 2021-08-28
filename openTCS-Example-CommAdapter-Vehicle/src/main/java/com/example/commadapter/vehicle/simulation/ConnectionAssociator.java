@@ -11,8 +11,8 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import java.util.Map;
 import static java.util.Objects.requireNonNull;
-import org.opentcs.contrib.tcp.netty.ClientEntry;
-import org.opentcs.contrib.tcp.netty.ConnectionAssociatedEvent;
+import org.opentcs.contrib.communication.tcp.ClientEntry;
+import org.opentcs.contrib.communication.tcp.ConnectionAssociatedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

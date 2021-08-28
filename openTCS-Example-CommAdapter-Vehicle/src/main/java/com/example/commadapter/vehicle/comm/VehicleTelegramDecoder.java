@@ -17,7 +17,7 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 import java.util.List;
 import static java.util.Objects.requireNonNull;
 import org.apache.commons.codec.binary.Hex;
-import org.opentcs.contrib.tcp.netty.ConnectionEventListener;
+import org.opentcs.contrib.communication.tcp.ConnectionEventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

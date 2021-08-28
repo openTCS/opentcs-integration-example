@@ -1,6 +1,7 @@
 /.gradle/
 /build/
 /.nb-gradle/
+/openTCS-Contrib-Communication-TCP/build/
 /openTCS-Example-CommAdapter-Vehicle/build/
 /openTCS-Example-Common/build/
 /openTCS-Example-Documentation/build/
