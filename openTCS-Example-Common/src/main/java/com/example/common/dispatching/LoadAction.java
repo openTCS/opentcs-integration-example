@@ -10,7 +10,7 @@ package com.example.common.dispatching;
 import org.opentcs.data.order.DriveOrder;
 
 /**
- * Defines (configurable) strings for loading and unloading that can be used for vehicle actions in 
+ * Defines (configurable) strings for loading and unloading that can be used for vehicle actions in
  * the kernel's model.
  *
  * @author Stefan Walter (Fraunhofer IML)

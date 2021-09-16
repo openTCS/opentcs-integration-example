@@ -38,7 +38,7 @@ public class VehicleTelegramEncoder
       OrderRequest order = (OrderRequest) msg;
       LOG.debug("Encoding order telegram: {}", order.toString());
     }
-    
+
     out.writeBytes(msg.getRawContent());
   }
 }

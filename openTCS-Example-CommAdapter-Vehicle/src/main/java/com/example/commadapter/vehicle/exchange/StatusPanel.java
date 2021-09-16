@@ -45,7 +45,7 @@ public class StatusPanel
   /**
    * The bundle to use.
    */
-  private static final ResourceBundle resourceBundle 
+  private static final ResourceBundle resourceBundle
       = ResourceBundle.getBundle("com/example/commadapter/vehicle/Bundle");
   /**
    * The vehicle service used for interaction with the comm adapter.

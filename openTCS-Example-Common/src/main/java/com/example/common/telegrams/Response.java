@@ -17,7 +17,7 @@ import javax.annotation.Nonnull;
  */
 public abstract class Response
     extends Telegram {
-  
+
   /**
    * Creates a new instance.
    *
