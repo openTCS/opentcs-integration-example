@@ -7,9 +7,9 @@
  */
 package com.example.commadapter.vehicle.simulation;
 
-import com.google.common.primitives.Ints;
 import com.example.commadapter.vehicle.telegrams.OrderRequest;
 import com.example.commadapter.vehicle.telegrams.StateRequest;
+import com.google.common.primitives.Ints;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;

@@ -7,11 +7,11 @@
  */
 package com.example.commadapter.vehicle.simulation;
 
-import com.google.common.base.Strings;
-import com.google.common.primitives.Ints;
 import com.example.commadapter.vehicle.ExampleCommAdapter;
 import com.example.commadapter.vehicle.telegrams.OrderRequest;
 import com.example.commadapter.vehicle.telegrams.StateRequest;
+import com.google.common.base.Strings;
+import com.google.common.primitives.Ints;
 import io.netty.channel.ChannelHandler;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import java.util.Arrays;

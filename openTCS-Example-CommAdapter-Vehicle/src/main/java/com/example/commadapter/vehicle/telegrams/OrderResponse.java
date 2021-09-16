@@ -7,12 +7,12 @@
  */
 package com.example.commadapter.vehicle.telegrams;
 
+import com.example.common.telegrams.Response;
+import static com.example.common.telegrams.Telegram.getCheckSum;
 import static com.google.common.base.Ascii.ETX;
 import static com.google.common.base.Ascii.STX;
 import static com.google.common.base.Preconditions.checkArgument;
 import com.google.common.primitives.Ints;
-import com.example.common.telegrams.Response;
-import static com.example.common.telegrams.Telegram.getCheckSum;
 import static java.util.Objects.requireNonNull;
 
 /**

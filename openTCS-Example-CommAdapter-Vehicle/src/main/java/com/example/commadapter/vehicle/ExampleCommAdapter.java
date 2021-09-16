@@ -7,8 +7,6 @@
  */
 package com.example.commadapter.vehicle;
 
-import com.google.common.primitives.Ints;
-import com.google.inject.assistedinject.Assisted;
 import com.example.commadapter.vehicle.comm.VehicleTelegramDecoder;
 import com.example.commadapter.vehicle.comm.VehicleTelegramEncoder;
 import com.example.commadapter.vehicle.exchange.ExampleProcessModelTO;
@@ -26,6 +24,8 @@ import com.example.common.telegrams.Response;
 import com.example.common.telegrams.StateRequesterTask;
 import com.example.common.telegrams.Telegram;
 import com.example.common.telegrams.TelegramSender;
+import com.google.common.primitives.Ints;
+import com.google.inject.assistedinject.Assisted;
 import io.netty.channel.ChannelHandler;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import java.beans.PropertyChangeEvent;

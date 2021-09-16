@@ -7,8 +7,6 @@
  */
 package com.example.commadapter.vehicle.exchange;
 
-import com.google.common.base.Strings;
-import com.google.inject.assistedinject.Assisted;
 import com.example.commadapter.vehicle.ExampleProcessModel;
 import com.example.commadapter.vehicle.exchange.commands.SendRequestCommand;
 import com.example.commadapter.vehicle.exchange.commands.SetDisconnectingOnVehicleIdleCommand;
@@ -18,6 +16,8 @@ import com.example.commadapter.vehicle.exchange.commands.SetReconnectingOnConnec
 import com.example.commadapter.vehicle.exchange.commands.SetVehicleHostCommand;
 import com.example.commadapter.vehicle.exchange.commands.SetVehiclePortCommand;
 import com.example.commadapter.vehicle.telegrams.OrderRequest;
+import com.google.common.base.Strings;
+import com.google.inject.assistedinject.Assisted;
 import java.util.Objects;
 import static java.util.Objects.requireNonNull;
 import javax.inject.Inject;

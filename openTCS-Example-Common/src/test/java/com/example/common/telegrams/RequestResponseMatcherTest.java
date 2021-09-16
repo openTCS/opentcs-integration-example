@@ -7,11 +7,6 @@
  */
 package com.example.common.telegrams;
 
-import com.example.common.telegrams.Request;
-import com.example.common.telegrams.Response;
-import com.example.common.telegrams.RequestResponseMatcher;
-import com.example.common.telegrams.Telegram;
-import com.example.common.telegrams.TelegramSender;
 import static com.google.common.base.Ascii.ETX;
 import static com.google.common.base.Ascii.STX;
 import com.google.common.primitives.Ints;

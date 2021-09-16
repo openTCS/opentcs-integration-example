@@ -7,10 +7,10 @@
  */
 package com.example.commadapter.vehicle.comm;
 
-import com.google.common.primitives.Ints;
 import com.example.commadapter.vehicle.telegrams.OrderResponse;
 import com.example.commadapter.vehicle.telegrams.StateResponse;
 import com.example.common.telegrams.Response;
+import com.google.common.primitives.Ints;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;

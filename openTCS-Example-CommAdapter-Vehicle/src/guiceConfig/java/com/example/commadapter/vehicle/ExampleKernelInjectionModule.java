@@ -7,9 +7,6 @@
  */
 package com.example.commadapter.vehicle;
 
-import com.example.commadapter.vehicle.ExampleCommAdapterConfiguration;
-import com.example.commadapter.vehicle.ExampleCommAdapterFactory;
-import com.example.commadapter.vehicle.ExampleAdapterComponentsFactory;
 import com.google.inject.assistedinject.FactoryModuleBuilder;
 import org.opentcs.customizations.kernel.KernelInjectionModule;
 import org.slf4j.Logger;

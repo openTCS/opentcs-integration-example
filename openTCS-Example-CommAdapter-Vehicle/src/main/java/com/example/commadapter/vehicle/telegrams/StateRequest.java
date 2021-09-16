@@ -7,11 +7,11 @@
  */
 package com.example.commadapter.vehicle.telegrams;
 
+import com.example.common.telegrams.Request;
+import static com.example.common.telegrams.Telegram.getCheckSum;
 import static com.google.common.base.Ascii.ETX;
 import static com.google.common.base.Ascii.STX;
 import com.google.common.primitives.Ints;
-import com.example.common.telegrams.Request;
-import static com.example.common.telegrams.Telegram.getCheckSum;
 
 /**
  * Represents a state request addressed to the vehicle.

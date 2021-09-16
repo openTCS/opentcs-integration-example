@@ -7,8 +7,6 @@
  */
 package com.example.commadapter.vehicle;
 
-import com.example.commadapter.vehicle.ExampleAdapterComponentsFactory;
-import com.example.commadapter.vehicle.ExampleCommAdapterFactory;
 import com.example.common.VehicleProperties;
 import org.junit.*;
 import static org.junit.Assert.*;

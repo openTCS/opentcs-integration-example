@@ -7,9 +7,9 @@
  */
 package com.example.commadapter.vehicle;
 
-import com.google.inject.assistedinject.FactoryModuleBuilder;
 import com.example.commadapter.vehicle.exchange.AdapterPanelComponentsFactory;
 import com.example.commadapter.vehicle.exchange.ExampleCommAdapterPanelFactory;
+import com.google.inject.assistedinject.FactoryModuleBuilder;
 import org.opentcs.customizations.controlcenter.ControlCenterInjectionModule;
 
 /**

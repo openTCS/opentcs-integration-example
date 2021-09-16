@@ -7,12 +7,12 @@
  */
 package com.example.commadapter.vehicle.simulation;
 
-import static com.google.common.base.Ascii.ETX;
-import static com.google.common.base.Ascii.STX;
-import com.google.common.primitives.Ints;
 import com.example.commadapter.vehicle.telegrams.OrderResponse;
 import com.example.commadapter.vehicle.telegrams.StateResponse;
 import com.example.common.telegrams.Telegram;
+import static com.google.common.base.Ascii.ETX;
+import static com.google.common.base.Ascii.STX;
+import com.google.common.primitives.Ints;
 
 /**
  * Represents the state of a physical vehicle.

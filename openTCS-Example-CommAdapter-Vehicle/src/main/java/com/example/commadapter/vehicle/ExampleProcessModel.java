@@ -7,10 +7,10 @@
  */
 package com.example.commadapter.vehicle;
 
-import static com.google.common.base.Preconditions.checkArgument;
 import com.example.commadapter.vehicle.telegrams.OrderRequest;
 import com.example.commadapter.vehicle.telegrams.StateRequest;
 import com.example.commadapter.vehicle.telegrams.StateResponse;
+import static com.google.common.base.Preconditions.checkArgument;
 import static java.util.Objects.requireNonNull;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

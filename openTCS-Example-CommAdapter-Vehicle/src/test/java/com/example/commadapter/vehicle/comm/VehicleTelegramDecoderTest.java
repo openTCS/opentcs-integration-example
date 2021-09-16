@@ -12,14 +12,13 @@
  */
 package com.example.commadapter.vehicle.comm;
 
-import com.example.commadapter.vehicle.comm.VehicleTelegramDecoder;
-import static com.google.common.base.Ascii.ETX;
-import static com.google.common.base.Ascii.STX;
-import com.google.common.primitives.Ints;
 import com.example.commadapter.vehicle.telegrams.OrderResponse;
 import com.example.commadapter.vehicle.telegrams.StateResponse;
 import com.example.common.telegrams.Response;
 import com.example.common.telegrams.Telegram;
+import static com.google.common.base.Ascii.ETX;
+import static com.google.common.base.Ascii.STX;
+import com.google.common.primitives.Ints;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
