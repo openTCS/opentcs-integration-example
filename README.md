@@ -6,8 +6,9 @@ Which openTCS release it is based on is defined in [gradle/dependency-versions.g
 
 ## Recommended usage
 
-1. Run `gradlew cloneProject <-PintegrationName=SomeName> <-PclassPrefix=SomePrefix> <-PpackageName=com.example>`.
+1. Run `gradlew clean cloneProject <-PintegrationName=SomeName> <-PclassPrefix=SomePrefix> <-PpackageName=com.example>`.
    The result will be a new integration project skeleton in the `build/` directory.
+   (Running the `clean` task before `cloneProject`, as shown here, is recommended.)
 2. Copy the newly created project skeleton somewhere else to work on it.
    (The `build/` directory will be deleted whenever `gradlew clean` is run, which would also delete your project.)
 
