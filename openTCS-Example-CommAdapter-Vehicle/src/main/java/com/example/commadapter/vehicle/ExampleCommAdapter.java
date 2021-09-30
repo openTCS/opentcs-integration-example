@@ -36,7 +36,7 @@ import java.util.Map;
 import java.util.Objects;
 import static java.util.Objects.requireNonNull;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ScheduledExecutorService;
 import javax.inject.Inject;
 import org.opentcs.contrib.communication.tcp.ConnectionEventListener;
 import org.opentcs.contrib.communication.tcp.TcpClientChannelManager;
@@ -76,7 +76,7 @@ public class ExampleCommAdapter
   /**
    * The kernel's executor service.
    */
-  private final ExecutorService kernelExecutor;
+  private final ScheduledExecutorService kernelExecutor;
   /**
    * Manages counting the ids for all {@link Request} telegrams.
    */
@@ -110,7 +110,7 @@ public class ExampleCommAdapter
   public ExampleCommAdapter(@Assisted Vehicle vehicle,
                             OrderMapper orderMapper,
                             ExampleAdapterComponentsFactory componentsFactory,
-                            @KernelExecutor ExecutorService kernelExecutor) {
+                            @KernelExecutor ScheduledExecutorService kernelExecutor) {
     super(new ExampleProcessModel(vehicle), 3, 2, LoadAction.CHARGE, kernelExecutor);
     this.orderMapper = requireNonNull(orderMapper, "orderMapper");
     this.componentsFactory = requireNonNull(componentsFactory, "componentsFactory");
