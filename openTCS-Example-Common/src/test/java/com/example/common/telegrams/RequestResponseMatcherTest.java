@@ -11,7 +11,7 @@ import static com.google.common.base.Ascii.ETX;
 import static com.google.common.base.Ascii.STX;
 import com.google.common.primitives.Ints;
 import org.junit.*;
-import static org.mockito.Matchers.any;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
