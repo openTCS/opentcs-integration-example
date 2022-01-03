@@ -160,7 +160,7 @@ Has to differ from the previous request.
 
 |{counter:ByteIndexOrderRequest}
 .2+|destinationId
-.2+|_unit16_
+.2+|_uint16_
 .2+|The ID of the destination point.
 
 |{counter:ByteIndexOrderRequest}
