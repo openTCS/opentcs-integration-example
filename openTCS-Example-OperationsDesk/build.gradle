@@ -18,9 +18,9 @@ configurations {
 }
 
 dependencies {
-  compile project(':openTCS-Example-Common')
+  implementation project(':openTCS-Example-Common')
   
-  compile group: 'org.opentcs', name: 'opentcs-operationsdesk', version: openTcsBaselineVersion
+  implementation group: 'org.opentcs', name: 'opentcs-operationsdesk', version: openTcsBaselineVersion
   plantoverviewJar group: 'org.opentcs', name: 'opentcs-operationsdesk', version: openTcsBaselineVersion, ext: 'jar'
 }
 

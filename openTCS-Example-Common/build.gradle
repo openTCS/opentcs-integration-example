@@ -6,8 +6,8 @@ apply from: "${rootDir}/gradle/license-headers.gradle"
 apply plugin: 'org.kordamp.gradle.stats'
 
 dependencies {
-  compile group: 'org.opentcs', name: 'opentcs-api-base', version: openTcsBaselineVersion
-  compile group: 'org.opentcs', name: 'opentcs-api-injection', version: openTcsBaselineVersion
+  implementation group: 'org.opentcs', name: 'opentcs-api-base', version: openTcsBaselineVersion
+  implementation group: 'org.opentcs', name: 'opentcs-api-injection', version: openTcsBaselineVersion
 }
 
 processResources.doLast {

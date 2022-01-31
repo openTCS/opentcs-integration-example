@@ -29,8 +29,8 @@ repositories {
 }
 
 dependencies {
-  compile localGroovy()
-  compile group: 'commons-io', name: 'commons-io', version: '2.5'
+  implementation localGroovy()
+  implementation group: 'commons-io', name: 'commons-io', version: '2.5'
 }
 
 subprojects {

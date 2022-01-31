@@ -18,9 +18,9 @@ configurations {
 }
 
 dependencies {
-  compile project(':openTCS-Example-CommAdapter-Vehicle')
+  implementation project(':openTCS-Example-CommAdapter-Vehicle')
 
-  compile group: 'org.opentcs', name: 'opentcs-kernel', version: openTcsBaselineVersion
+  implementation group: 'org.opentcs', name: 'opentcs-kernel', version: openTcsBaselineVersion
   kernelJar group: 'org.opentcs', name: 'opentcs-kernel', version: openTcsBaselineVersion, ext: 'jar'
 }
 

@@ -7,12 +7,12 @@ apply from: "${rootDir}/gradle/license-headers.gradle"
 apply plugin: 'org.kordamp.gradle.stats'
 
 dependencies {
-  compile project(':openTCS-Contrib-Communication-TCP')
-  compile project(':openTCS-Example-Common')
+  implementation project(':openTCS-Contrib-Communication-TCP')
+  implementation project(':openTCS-Example-Common')
 
-  compile group: 'org.opentcs', name: 'opentcs-api-injection', version: openTcsBaselineVersion
-  compile group: 'org.opentcs', name: 'opentcs-common', version: openTcsBaselineVersion
-  compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
+  implementation group: 'org.opentcs', name: 'opentcs-api-injection', version: openTcsBaselineVersion
+  implementation group: 'org.opentcs', name: 'opentcs-common', version: openTcsBaselineVersion
+  implementation group: 'commons-codec', name: 'commons-codec', version: '1.10'
 
-  runtime group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.21'
+  runtimeOnly group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.21'
 }

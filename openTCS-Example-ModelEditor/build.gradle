@@ -18,9 +18,9 @@ configurations {
 }
 
 dependencies {
-  compile project(':openTCS-Example-Common')
+  implementation project(':openTCS-Example-Common')
   
-  compile group: 'org.opentcs', name: 'opentcs-modeleditor', version: openTcsBaselineVersion
+  implementation group: 'org.opentcs', name: 'opentcs-modeleditor', version: openTcsBaselineVersion
   plantoverviewJar group: 'org.opentcs', name: 'opentcs-modeleditor', version: openTcsBaselineVersion, ext: 'jar'
 }
 
