@@ -37,12 +37,15 @@ import java.util.Objects;
 import static java.util.Objects.requireNonNull;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.stream.Collectors;
+import javax.annotation.Nonnull;
 import javax.inject.Inject;
 import org.opentcs.contrib.communication.tcp.ConnectionEventListener;
 import org.opentcs.contrib.communication.tcp.TcpClientChannelManager;
 import org.opentcs.customizations.kernel.KernelExecutor;
 import org.opentcs.data.model.Vehicle;
 import org.opentcs.data.order.DriveOrder;
+import org.opentcs.data.order.TransportOrder;
 import org.opentcs.drivers.vehicle.BasicVehicleCommAdapter;
 import org.opentcs.drivers.vehicle.MovementCommand;
 import org.opentcs.drivers.vehicle.VehicleProcessModel;
@@ -275,55 +278,12 @@ public class ExampleCommAdapter
   }
 
   @Override
-  public synchronized ExplainedBoolean canProcess(List<String> operations) {
-    requireNonNull(operations, "operations");
-    boolean canProcess = true;
-    String reason = "";
-    if (!isEnabled()) {
-      canProcess = false;
-      reason = "Adapter not enabled";
-    }
-    if (canProcess && !isVehicleConnected()) {
-      canProcess = false;
-      reason = "Vehicle does not seem to be connected";
-    }
-    if (canProcess
-        && getProcessModel().getCurrentState().getLoadState() == LoadState.UNKNOWN) {
-      canProcess = false;
-      reason = "Vehicle's load state is undefined";
-    }
-    boolean loaded = getProcessModel().getCurrentState().getLoadState() == LoadState.FULL;
-    final Iterator<String> opIter = operations.iterator();
-    while (canProcess && opIter.hasNext()) {
-      final String nextOp = opIter.next();
-      // If we're loaded, we cannot load another piece, but could unload.
-      if (loaded) {
-        if (nextOp.startsWith(LoadAction.LOAD)) {
-          canProcess = false;
-          reason = "Cannot load when already loaded";
-        }
-        else if (nextOp.startsWith(LoadAction.UNLOAD)) {
-          loaded = false;
-        }
-        else if (nextOp.startsWith(DriveOrder.Destination.OP_PARK)) {
-          canProcess = false;
-          reason = "Vehicle shouldn't park while in a loaded state.";
-        }
-        else if (nextOp.startsWith(LoadAction.CHARGE)) {
-          canProcess = false;
-          reason = "Vehicle shouldn't charge while in a loaded state.";
-        }
-      }
-      // If we're not loaded, we could load, but not unload.
-      else if (nextOp.startsWith(LoadAction.LOAD)) {
-        loaded = true;
-      }
-      else if (nextOp.startsWith(LoadAction.UNLOAD)) {
-        canProcess = false;
-        reason = "Cannot unload when not loaded";
-      }
-    }
-    return new ExplainedBoolean(canProcess, reason);
+  public ExplainedBoolean canProcess(@Nonnull TransportOrder order) {
+    return canProcessOperations(
+        order.getFutureDriveOrders().stream()
+            .map(driveOrder -> driveOrder.getDestination().getOperation())
+            .collect(Collectors.toList())
+    );
   }
 
   @Override
@@ -431,6 +391,57 @@ public class ExampleCommAdapter
         && getProcessModel().isPeriodicStateRequestEnabled()) {
       stateRequesterTask.restart();
     }
+  }
+
+  private ExplainedBoolean canProcessOperations(List<String> operations) {
+    requireNonNull(operations, "operations");
+    boolean canProcess = true;
+    String reason = "";
+    if (!isEnabled()) {
+      canProcess = false;
+      reason = "Adapter not enabled";
+    }
+    if (canProcess && !isVehicleConnected()) {
+      canProcess = false;
+      reason = "Vehicle does not seem to be connected";
+    }
+    if (canProcess
+        && getProcessModel().getCurrentState().getLoadState() == LoadState.UNKNOWN) {
+      canProcess = false;
+      reason = "Vehicle's load state is undefined";
+    }
+    boolean loaded = getProcessModel().getCurrentState().getLoadState() == LoadState.FULL;
+    final Iterator<String> opIter = operations.iterator();
+    while (canProcess && opIter.hasNext()) {
+      final String nextOp = opIter.next();
+      // If we're loaded, we cannot load another piece, but could unload.
+      if (loaded) {
+        if (nextOp.startsWith(LoadAction.LOAD)) {
+          canProcess = false;
+          reason = "Cannot load when already loaded";
+        }
+        else if (nextOp.startsWith(LoadAction.UNLOAD)) {
+          loaded = false;
+        }
+        else if (nextOp.startsWith(DriveOrder.Destination.OP_PARK)) {
+          canProcess = false;
+          reason = "Vehicle shouldn't park while in a loaded state.";
+        }
+        else if (nextOp.startsWith(LoadAction.CHARGE)) {
+          canProcess = false;
+          reason = "Vehicle shouldn't charge while in a loaded state.";
+        }
+      }
+      // If we're not loaded, we could load, but not unload.
+      else if (nextOp.startsWith(LoadAction.LOAD)) {
+        loaded = true;
+      }
+      else if (nextOp.startsWith(LoadAction.UNLOAD)) {
+        canProcess = false;
+        reason = "Cannot unload when not loaded";
+      }
+    }
+    return new ExplainedBoolean(canProcess, reason);
   }
 
   public RequestResponseMatcher getRequestResponseMatcher() {
