@@ -7,9 +7,6 @@
 # DEPLOY_REPO_URL: URL of the repository to deploy artifacts to.
 image: adoptopenjdk:13-jdk-hotspot
 
-include:
-  - template: Code-Quality.gitlab-ci.yml
-
 workflow:
   rules:
     - if: $CI_MERGE_REQUEST_IID
@@ -51,6 +48,7 @@ build:
   artifacts:
     paths:
       - build/distributions/*.zip
+      - openTCS-*/build/reports/checkstyle/*.xml
       - openTCS-*/build/test-results/test/TEST-*.xml
     reports:
       junit: openTCS-*/build/test-results/test/TEST-*.xml
@@ -81,6 +79,19 @@ code_quality:
   stage: test
   tags:
     - opentcs-runner
+  variables:
+    CODE_CLIMATE_FILE: gl-code-quality-report.json
+  script:
+    - echo "Installing dependencies required for violations-command-line..."
+    - apt update && apt upgrade -y
+    - apt install -y nodejs npm
+    - npm install -g npx
+    - echo "Converting CheckStyle reports to CodeClimate report..."
+    - npx violations-command-line@1.21.0 -cc $CODE_CLIMATE_FILE -print-violations false -diff-print-violations true -v "CHECKSTYLE" "." ".*checkstyle/.*\.xml$" "Checkstyle"
+    - sed -i.bak -e "s,$CI_PROJECT_DIR/,,g" $CODE_CLIMATE_FILE
+  artifacts:
+    reports:
+      codequality: $CODE_CLIMATE_FILE
   rules:
     - if: '$CODE_QUALITY_DISABLED'
       when: never
