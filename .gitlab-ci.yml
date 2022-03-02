@@ -51,6 +51,7 @@ build:
   artifacts:
     paths:
       - build/distributions/*.zip
+      - openTCS-*/build/test-results/test/TEST-*.xml
     reports:
       junit: openTCS-*/build/test-results/test/TEST-*.xml
     when: always
