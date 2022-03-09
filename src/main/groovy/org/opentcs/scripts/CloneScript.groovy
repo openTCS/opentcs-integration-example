@@ -73,7 +73,8 @@ destFile.eachFileRecurse(FileType.FILES) { file ->
   // For all guice modules, change the class names and file names to contain the new class prefix
   // and change packages to correspond to the new package name
   if (file.name.matches("(.+).KernelInjectionModule")
-      || file.name.matches("(.+).ControlCenterInjectionModule")) {
+      || file.name.matches("(.+).ControlCenterInjectionModule")
+      || file.name.matches("(.+).PlantOverviewInjectionModule")) {
     file.text = file.text.replace(oldClassPrefix, newClassPrefix)
     file.text = file.text.replace(oldPackageName, newPackageName)
     if (file.name.matches("^" + oldClassPrefix + "(.+)")) {

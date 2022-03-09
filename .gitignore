@@ -7,5 +7,7 @@
 /openTCS-Example-Documentation/build/
 /openTCS-Example-Kernel/build/
 /openTCS-Example-KernelControlCenter/build/
+/openTCS-Example-KernelExtension-Statistics/build/
 /openTCS-Example-ModelEditor/build/
 /openTCS-Example-OperationsDesk/build/
+/openTCS-Example-OperationsDesk-Panel-Statistics/build/
