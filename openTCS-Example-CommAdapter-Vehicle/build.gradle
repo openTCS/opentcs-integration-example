@@ -14,5 +14,5 @@ dependencies {
   implementation group: 'org.opentcs', name: 'opentcs-common', version: openTcsBaselineVersion
   implementation group: 'commons-codec', name: 'commons-codec', version: '1.10'
 
-  runtimeOnly group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.21'
+  runtimeOnly group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.36'
 }
