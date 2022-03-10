@@ -9,7 +9,7 @@ buildscript {
     // License plugin
     classpath 'gradle.plugin.nl.javadude.gradle.plugins:license-gradle-plugin:0.12.1'
     // Stats plugin
-    classpath 'org.kordamp.gradle:stats-gradle-plugin:0.2.0'
+    classpath 'org.kordamp.gradle:stats-gradle-plugin:0.2.2'
   }
 }
 
@@ -54,6 +54,10 @@ distributions {
       project(':openTCS-Example-Documentation').ext.collectableDistDir
     }
   }
+}
+
+task statsAggregate(type: org.kordamp.gradle.stats.AggregateStatsReportTask) {
+  dependsOn subprojects*.stats
 }
 
 task subDists {
