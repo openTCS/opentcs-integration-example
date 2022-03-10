@@ -12,7 +12,7 @@ dependencies {
 
   implementation group: 'org.opentcs', name: 'opentcs-api-injection', version: openTcsBaselineVersion
   implementation group: 'org.opentcs', name: 'opentcs-common', version: openTcsBaselineVersion
-  implementation group: 'commons-codec', name: 'commons-codec', version: '1.10'
+  implementation group: 'commons-codec', name: 'commons-codec', version: '1.15'
 
   runtimeOnly group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.36'
 }

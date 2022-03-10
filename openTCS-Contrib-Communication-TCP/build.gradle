@@ -9,5 +9,5 @@ apply plugin: 'org.kordamp.gradle.stats'
 dependencies {
   api group: 'io.netty', name: 'netty-all', version: '4.1.68.Final'
   implementation group: 'org.opentcs', name: 'opentcs-api-base', version: openTcsBaselineVersion
-  implementation group: 'commons-codec', name: 'commons-codec', version: '1.10'
+  implementation group: 'commons-codec', name: 'commons-codec', version: '1.15'
 }
