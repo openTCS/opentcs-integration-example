@@ -8,8 +8,6 @@ buildscript {
   dependencies {
     // License plugin
     classpath 'gradle.plugin.nl.javadude.gradle.plugins:license-gradle-plugin:0.12.1'
-    // Versions plugin
-    classpath 'com.github.ben-manes:gradle-versions-plugin:0.12.0'
     // Stats plugin
     classpath 'org.kordamp.gradle:stats-gradle-plugin:0.2.0'
   }
