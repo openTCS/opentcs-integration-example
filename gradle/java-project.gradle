@@ -13,8 +13,6 @@ dependencies {
   compileOnly group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
   testCompileOnly group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
 
-  implementation group: 'com.google.guava', name: 'guava', version: '19.0'
-
   // For JUnit 4.x tests
   testCompileOnly group: 'junit', name: 'junit', version: '4.13.2'
   testRuntimeOnly group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.7.2'
