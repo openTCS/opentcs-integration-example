@@ -1,6 +1,7 @@
 plugins {
   // To use AsciiDoctor for documentation
-  id 'org.asciidoctor.convert' version '1.5.3'
+  id 'org.asciidoctor.jvm.convert' version '3.3.2'
+  id 'org.asciidoctor.jvm.pdf' version '3.3.2'
 }
 
 apply from: "${rootDir}/gradle/dependency-versions.gradle"
@@ -24,9 +25,6 @@ configurations {
 
 dependencies {
   baselineDoc group: 'org.opentcs', name: 'opentcs-documentation', version: openTcsBaselineVersion, ext: 'zip'
-  
-  asciidoctor group: 'org.asciidoctor', name: 'asciidoctorj-diagram', version: '1.5.0'
-  asciidoctor group: 'org.asciidoctor', name: 'asciidoctorj-pdf', version: '1.5.0-alpha.11'
 }
 
 distributions {
@@ -63,27 +61,27 @@ asciidoctor {
 
   // Where to look for AsciiDoc files. Default: src/docs/asciidoc
   // sourceDir = file("src/docs/users-guide")
+  baseDirFollowsSourceDir()
   
   // Where to put the rendered documents. Default: $buildDir/asciidoc.
   outputDir = commAdapterDocsDir
-  
-  // Whether to put backends' outputs into separate subdirectories  
-  separateOutputDirs = false
 	
   sources {
     include 'opentcs-example-commadapter.adoc'
   }
   
-  // Set the backends the processor should use: html5 (default), docbook, manpage, pdf, deckjs
-	backends = ['html5', 'pdf']
-  
-  requires 'asciidoctor-diagram'
+  outputOptions {
+    // Whether to put backends' outputs into separate subdirectories
+    separateOutputDirs = false
+    // Set the backends the processor should use: html5 (default), docbook, manpage, pdf, deckjs
+    backends = ['html5', 'pdf']
+  }
   
   attributes 'source-highlighter': 'coderay',
              'coderay-linenums-mode': 'table',
   // Custom attributes that we want to be substituted in the document.
              'common-javaSrc': project(':openTCS-Example-Common').javaSrcDir,
-             'buildDate': new Date().format('dd.MM.yyyy'),
+             'buildDate': new Date().format('yyy-MM-dd'),
              'imagesoutdir': commAdapterDocsImagesDir, // Set the images directory for the output of asciidoctor-diagram
              // 'imagesdir': 'images',
   // The directory where the theme file is located

@@ -1,6 +1,6 @@
 = openTCS: Example Vehicle Communication Protocol and Vehicle Driver Documentation
 The openTCS developers
-openTCS-Example {project-version} built on {buildDate}
+openTCS-Example built on {buildDate}
 
 // TIP: Always have the comprehensive http://asciidoctor.org/docs/asciidoc-syntax-quick-reference[QuickReference] handy.
 
