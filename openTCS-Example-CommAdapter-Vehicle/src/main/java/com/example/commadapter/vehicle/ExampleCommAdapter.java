@@ -21,7 +21,6 @@ import static com.example.common.telegrams.BoundedCounter.UINT16_MAX_VALUE;
 import com.example.common.telegrams.Request;
 import com.example.common.telegrams.RequestResponseMatcher;
 import com.example.common.telegrams.Response;
-import com.example.common.telegrams.StateRequesterTask;
 import com.example.common.telegrams.Telegram;
 import com.example.common.telegrams.TelegramSender;
 import com.google.common.primitives.Ints;
@@ -37,6 +36,8 @@ import java.util.Objects;
 import static java.util.Objects.requireNonNull;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
@@ -97,9 +98,13 @@ public class ExampleCommAdapter
    */
   private RequestResponseMatcher requestResponseMatcher;
   /**
-   * A task for enqueuing state requests periodically.
+   * A future for the periodic state requester task.
    */
-  private StateRequesterTask stateRequesterTask;
+  private ScheduledFuture<?> stateRequestFuture;
+  /**
+   * Whether we have sent a state request and are still waiting for a response.
+   */
+  private volatile boolean expectingStateResponse;
 
   /**
    * Creates a new instance.
@@ -124,15 +129,6 @@ public class ExampleCommAdapter
   public void initialize() {
     super.initialize();
     this.requestResponseMatcher = componentsFactory.createRequestResponseMatcher(this);
-    this.stateRequesterTask = componentsFactory.createStateRequesterTask(e -> {
-      requestResponseMatcher.enqueueRequest(new StateRequest(Telegram.ID_DEFAULT));
-    });
-  }
-
-  @Override
-  public void terminate() {
-    stateRequesterTask.disable();
-    super.terminate();
   }
 
   @Override
@@ -216,15 +212,18 @@ public class ExampleCommAdapter
                           ExampleProcessModel.Attribute.PERIODIC_STATE_REQUESTS_ENABLED.name())) {
       if (getProcessModel().isCommAdapterConnected()
           && getProcessModel().isPeriodicStateRequestEnabled()) {
-        stateRequesterTask.enable();
+        startPeriodicStateRequesting();
       }
       else {
-        stateRequesterTask.disable();
+        stopPeriodicStateRequesting();
       }
     }
     if (Objects.equals(evt.getPropertyName(),
                        ExampleProcessModel.Attribute.PERIOD_STATE_REQUESTS_INTERVAL.name())) {
-      stateRequesterTask.setRequestInterval(getProcessModel().getStateRequestInterval());
+      if (getProcessModel().isPeriodicStateRequestEnabled()) {
+        stopPeriodicStateRequesting();
+        startPeriodicStateRequesting();
+      }
     }
   }
 
@@ -384,13 +383,6 @@ public class ExampleCommAdapter
     if (telegram instanceof OrderRequest) {
       getProcessModel().setLastOrderSent((OrderRequest) telegram);
     }
-
-    // If we just sent a state request, restart the state requester task to schedule the next
-    // state request
-    if (telegram instanceof StateRequest
-        && getProcessModel().isPeriodicStateRequestEnabled()) {
-      stateRequesterTask.restart();
-    }
   }
 
   private ExplainedBoolean canProcessOperations(List<String> operations) {
@@ -448,8 +440,48 @@ public class ExampleCommAdapter
     return requestResponseMatcher;
   }
 
+  private void startPeriodicStateRequesting() {
+    if (stateRequestFuture != null) {
+      LOG.warn("Periodic state requesting already running - not started again.");
+      return;
+    }
+
+    LOG.debug("Starting periodic state requests...");
+
+    stateRequestFuture = kernelExecutor.scheduleAtFixedRate(
+        () -> requestStateFromVehicle(),
+        getProcessModel().getStateRequestInterval(),
+        getProcessModel().getStateRequestInterval(),
+        TimeUnit.MILLISECONDS
+    );
+  }
+
+  private void stopPeriodicStateRequesting() {
+    if (stateRequestFuture == null) {
+      LOG.warn("Periodic state requesting not running - not stopped.");
+      return;
+    }
+
+    LOG.debug("Stopping periodic state requests...");
+
+    stateRequestFuture.cancel(false);
+    stateRequestFuture = null;
+  }
+
+  private void requestStateFromVehicle() {
+    if (expectingStateResponse) {
+      LOG.warn("No response to previous state request, yet - not sending another one.");
+    }
+    else {
+      requestResponseMatcher.enqueueRequest(new StateRequest(Telegram.ID_DEFAULT));
+      expectingStateResponse = true;
+    }
+  }
+
   private void onStateResponse(StateResponse stateResponse) {
     requireNonNull(stateResponse, "stateResponse");
+
+    expectingStateResponse = false;
 
     final StateResponse previousState = getProcessModel().getCurrentState();
     final StateResponse currentState = stateResponse;
