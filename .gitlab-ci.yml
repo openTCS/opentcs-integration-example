@@ -1,10 +1,3 @@
-# The following variables are expected to be set:
-#
-# LOCAL_ARTIFACT_REPO_URL: URL of a local artifact repository for resolving dependencies.
-#
-# DO_DEPLOY: Whether or not to deploy.
-# NO_BUILD_NUMBER: Whether to include the build number in the artifacts' version numbers.
-# DEPLOY_REPO_URL: URL of the repository to deploy artifacts to.
 image: adoptopenjdk:13-jdk-hotspot
 
 workflow:
@@ -16,6 +9,12 @@ workflow:
 
 variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  DO_DEPLOY:
+    value: "false"
+    description: "Whether (true) or not (false) to deploy."
+  NO_BUILD_NUMBER:
+    value: "false"
+    description: "Whether (true) or not (false) to exclude the build number from the artifacts' version numbers."
 
 before_script:
   # Put GRADLE_USER_HOME into the cache directory so the wrapper is not
@@ -40,10 +39,10 @@ build:
     - echo "DEPLOY_REPO_URL is $DEPLOY_REPO_URL"
     - 'if [ "$DO_DEPLOY" = "true" ]; then
         echo "Executing build with deployment...";
-        ./gradlew clean build publish -PlocalArtifactRepositoryUrl=$LOCAL_ARTIFACT_REPO_URL -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER" -PDEPLOY_REPO_URL="$DEPLOY_REPO_URL";
+        ./gradlew clean build publish -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER" -PDEPLOY_REPO_URL="$DEPLOY_REPO_URL";
       else
         echo "Executing build without deployment...";
-        ./gradlew clean build -PlocalArtifactRepositoryUrl=$LOCAL_ARTIFACT_REPO_URL -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER";
+        ./gradlew clean build -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER";
       fi'
   artifacts:
     paths:

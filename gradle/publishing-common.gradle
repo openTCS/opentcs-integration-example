@@ -2,17 +2,39 @@ apply plugin: 'maven-publish'
 
 publishing {
   repositories {
-    maven {
-      name = "deploy-repo"
-      url = project.hasProperty('DEPLOY_REPO_URL') ? project.property('DEPLOY_REPO_URL') : ''
+    if (System.getenv("CI_API_V4_URL") != null
+      && System.getenv("CI_PROJECT_ID") != null
+      && System.getenv("CI_JOB_TOKEN") != null) {
 
-      credentials(HttpHeaderCredentials) {
-        name = 'Job-Token'
-        value = System.getenv("CI_JOB_TOKEN")
+      maven {
+        name = "gitlab-maven-package-registry"
+        url =  "${System.env.CI_API_V4_URL}/projects/${System.env.CI_PROJECT_ID}/packages/maven"
+
+        credentials(HttpHeaderCredentials) {
+          name = 'Job-Token'
+          value = "${System.env.CI_JOB_TOKEN}"
+        }
+        authentication {
+          header(HttpHeaderAuthentication)
+        }
       }
-      authentication {
-        header(HttpHeaderAuthentication)
-      }
+
     }
+
+// To deploy into your own local artifact repository, use something like the following:
+//
+//    maven {
+//      name = "deploy-repo"
+//      url = project.hasProperty('DEPLOY_REPO_URL') ? project.property('DEPLOY_REPO_URL') : ''
+//
+//      credentials(HttpHeaderCredentials) {
+//        name = 'Job-Token'
+//        value = System.getenv("CI_JOB_TOKEN")
+//      }
+//      authentication {
+//        header(HttpHeaderAuthentication)
+//      }
+//    }
+
   }
 }

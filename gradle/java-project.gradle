@@ -4,6 +4,7 @@ sourceCompatibility = '1.8'
 archivesBaseName = name.toLowerCase()
 
 repositories {
+  mavenLocal()
   mavenCentral()
 }
 
