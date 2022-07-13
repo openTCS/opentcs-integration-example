@@ -11,12 +11,15 @@ buildscript {
     classpath 'gradle.plugin.nl.javadude.gradle.plugins:license-gradle-plugin:0.14.0'
     // Stats plugin
     classpath 'org.kordamp.gradle:stats-gradle-plugin:0.2.2'
+    // JaCoCo log plugin
+    classpath 'gradle.plugin.org.barfuin.gradle.jacocolog:gradle-jacoco-log:2.0.0'
   }
 }
 
 apply plugin: 'base'
 apply plugin: 'distribution'
 apply plugin: 'groovy'
+apply plugin: 'org.barfuin.gradle.jacocolog'
 
 apply from: "${rootDir}/gradle/common.gradle"
 apply from: "${rootDir}/gradle/publishing-common.gradle"

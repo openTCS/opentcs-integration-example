@@ -36,14 +36,14 @@ build:
     - echo "CI_PIPELINE_IID is $CI_PIPELINE_IID"
     - echo "DO_DEPLOY is $DO_DEPLOY"
     - echo "NO_BUILD_NUMBER is $NO_BUILD_NUMBER"
-    - echo "DEPLOY_REPO_URL is $DEPLOY_REPO_URL"
     - 'if [ "$DO_DEPLOY" = "true" ]; then
         echo "Executing build with deployment...";
-        ./gradlew clean build publish -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER" -PDEPLOY_REPO_URL="$DEPLOY_REPO_URL";
+        ./gradlew clean build publish jacocoLogAggregatedCoverage -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER";
       else
         echo "Executing build without deployment...";
-        ./gradlew clean build -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER";
+        ./gradlew clean build jacocoLogAggregatedCoverage -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER";
       fi'
+  coverage: '/Branch Coverage: ([0-9.]+)%/'
   artifacts:
     paths:
       - build/distributions/*.zip
