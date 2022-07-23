@@ -7,7 +7,7 @@ apply from: "${rootDir}/gradle/license-headers.gradle"
 apply plugin: 'org.kordamp.gradle.stats'
 
 if (!hasProperty('mainClass')) {
-  ext.mainClass = 'org.opentcs.guing.RunModelEditor'
+  ext.mainClass = 'org.opentcs.modeleditor.RunModelEditor'
 }
 mainClassName = ext.mainClass
 
