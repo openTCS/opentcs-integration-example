@@ -7,6 +7,8 @@
  */
 package com.example.operationsdesk.panels.statistics;
 
+import com.example.common.statistics.StatisticsLogParser;
+import com.example.common.statistics.StatisticsRecord;
 import static com.example.operationsdesk.panels.statistics.I18nPlantOverviewPanelStatistics.BUNDLE_PATH;
 import java.io.File;
 import java.io.IOException;
@@ -15,8 +17,6 @@ import java.util.ResourceBundle;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.opentcs.components.plantoverview.PluggablePanel;
-import org.opentcs.util.statistics.StatisticsLogParser;
-import org.opentcs.util.statistics.StatisticsRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

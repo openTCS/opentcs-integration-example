@@ -7,12 +7,25 @@
  */
 package com.example.operationsdesk.panels.statistics;
 
+import static com.example.common.statistics.StatisticsEvent.ORDER_ACTIVATED;
+import static com.example.common.statistics.StatisticsEvent.ORDER_ASSIGNED;
+import static com.example.common.statistics.StatisticsEvent.ORDER_CROSSED_DEADLINE;
+import static com.example.common.statistics.StatisticsEvent.ORDER_FINISHED_FAIL;
+import static com.example.common.statistics.StatisticsEvent.ORDER_FINISHED_SUCC;
+import static com.example.common.statistics.StatisticsEvent.POINT_FREED;
+import static com.example.common.statistics.StatisticsEvent.POINT_OCCUPIED;
+import static com.example.common.statistics.StatisticsEvent.VEHICLE_STARTS_CHARGING;
+import static com.example.common.statistics.StatisticsEvent.VEHICLE_STARTS_PROCESSING;
+import static com.example.common.statistics.StatisticsEvent.VEHICLE_STARTS_WAITING;
+import static com.example.common.statistics.StatisticsEvent.VEHICLE_STOPS_CHARGING;
+import static com.example.common.statistics.StatisticsEvent.VEHICLE_STOPS_PROCESSING;
+import static com.example.common.statistics.StatisticsEvent.VEHICLE_STOPS_WAITING;
+import com.example.common.statistics.StatisticsRecord;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
-import org.opentcs.util.statistics.StatisticsRecord;
 
 /**
  * Aggregates statistics records.

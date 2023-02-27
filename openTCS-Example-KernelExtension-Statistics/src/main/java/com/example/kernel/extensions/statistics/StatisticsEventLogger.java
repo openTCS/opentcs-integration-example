@@ -7,6 +7,8 @@
  */
 package com.example.kernel.extensions.statistics;
 
+import com.example.common.statistics.StatisticsEvent;
+import com.example.common.statistics.StatisticsRecord;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,8 +24,6 @@ import org.opentcs.data.model.Point;
 import org.opentcs.data.model.Vehicle;
 import org.opentcs.data.order.TransportOrder;
 import org.opentcs.util.event.EventHandler;
-import org.opentcs.util.statistics.StatisticsEvent;
-import org.opentcs.util.statistics.StatisticsRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
