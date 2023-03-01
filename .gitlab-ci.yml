@@ -1,100 +1,135 @@
-image: adoptopenjdk:13-jdk-hotspot
+default:
+  image: adoptopenjdk:13-jdk-hotspot
+  tags:
+    - opentcs-runner
+  before_script:
+    # Put GRADLE_USER_HOME into the cache directory so the wrapper and dependencies are not
+    # re-downloaded for every job.
+    - export GRADLE_USER_HOME=`pwd`/.gradle
+  timeout: 15 minutes
+
+include: '.gitlab/docker/codequality/version.yml'
 
 workflow:
   rules:
     - if: $CI_MERGE_REQUEST_IID
-    - if: $CI_COMMIT_TAG
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_PIPELINE_SOURCE == "web"
 
 variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
-  DO_DEPLOY:
+  DO_BUILD_CODEQUALITY_IMAGE:
     value: "false"
-    description: "Whether (true) or not (false) to deploy."
+    description: "Whether ('true') or not ('false') to (re-)build the Docker image for code quality jobs."
+  DO_DEPLOY_PRIVATE:
+    value: "false"
+    description: "Whether ('true') or not ('false') to deploy artifacts to private (GitLab) repository."
   NO_BUILD_NUMBER:
     value: "false"
-    description: "Whether (true) or not (false) to exclude the build number from the artifacts' version numbers."
-
-before_script:
-  # Put GRADLE_USER_HOME into the cache directory so the wrapper is not
-  # re-downloaded for every job.
-  - export GRADLE_USER_HOME=/cache/.gradle
-
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
+    description: "Whether ('true') or not ('false') to exclude the build number in the artifacts' version number, e.g. for release builds."
 
 stages:
   - build
   - test
+  - deploy
+
+build_code_quality_image:
+  stage: build
+  rules:
+    - if: $DO_BUILD_CODEQUALITY_IMAGE == "true"
+  image:
+    name: gcr.io/kaniko-project/executor:v1.9.1-debug
+    entrypoint: [""]
+  dependencies: []
+  script:
+    - echo "Building code quality image with tag ${CODEQUALITY_IMAGE_TAG}..."
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+    - >-
+      /kaniko/executor
+      --context "${CI_PROJECT_DIR}/.gitlab/docker/codequality"
+      --dockerfile "${CI_PROJECT_DIR}/.gitlab/docker/codequality/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}/codequality:${CODEQUALITY_IMAGE_TAG}"
 
 build:
   stage: build
-  tags:
-    - opentcs-runner
+  interruptible: true
+  dependencies: []
   script:
-    - echo "CI_PIPELINE_IID is $CI_PIPELINE_IID"
-    - echo "DO_DEPLOY is $DO_DEPLOY"
-    - echo "NO_BUILD_NUMBER is $NO_BUILD_NUMBER"
-    - 'if [ "$DO_DEPLOY" = "true" ]; then
-        echo "Executing build with deployment...";
-        ./gradlew clean build publish jacocoLogAggregatedCoverage -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER";
-      else
-        echo "Executing build without deployment...";
-        ./gradlew clean build jacocoLogAggregatedCoverage -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER";
-      fi'
-  coverage: '/Branch Coverage: ([0-9.]+)%/'
+    - ./gradlew -x check build testClasses -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER"
   artifacts:
     paths:
       - build/distributions/*.zip
-      - openTCS-*/build/reports/checkstyle/*.xml
-      - openTCS-*/build/test-results/test/TEST-*.xml
+      - openTCS-*/build/classes/
+      - openTCS-*/build/docs/
+      - openTCS-*/build/generated/
+      - openTCS-*/build/libs/
+      - openTCS-*/build/resources/
+      - openTCS-*/build/tmp/
+    expire_in: 1 week
+  cache:
+    key: build_test_deploy-$(date +%Y-%m)
+    paths:
+      - .gradle
+
+test:
+  stage: test
+  interruptible: true
+  dependencies:
+    - build
+  script:
+    - echo "Running unit tests..."
+    - ./gradlew test jacocoLogAggregatedCoverage -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER"
+  coverage: '/Branch Coverage: ([0-9.]+)%/'
+  artifacts:
     reports:
       junit: openTCS-*/build/test-results/test/TEST-*.xml
     when: always
     expire_in: 1 week
+  cache:
+    key: build_test_deploy-$(date +%Y-%m)
+    paths:
+      - .gradle
 
-ensure_tests_passed:
+lint:
   stage: test
-  tags:
-    - opentcs-runner
-  variables:
-    CONCATENATED_REPORT_FILE: concatenated-test-reports.xml
-  script:
-    - echo "Checking test reports for failures..."
-    - rm -f $CONCATENATED_REPORT_FILE
-    - find . -name "TEST-*.xml" -exec cat '{}' + >> $CONCATENATED_REPORT_FILE
-    # There are examples of simply using 'grep -L "<failure", but the
-    # grep we have here doesn't provide the expected exit status with
-    # that, so we stick to plain grep and an if-else clause.
-    - 'if grep "<failure" $CONCATENATED_REPORT_FILE ; then
-        echo "There are failed tests - failing this job...";
-        false;
-      else
-        echo "No failed tests here.";
-        true;
-      fi'
-
-code_quality:
-  stage: test
-  tags:
-    - opentcs-runner
+  interruptible: true
+  image: ${CI_REGISTRY_IMAGE}/codequality:${CODEQUALITY_IMAGE_TAG}
   variables:
     CODE_CLIMATE_FILE: gl-code-quality-report.json
+  dependencies:
+    - build
   script:
-    - echo "Installing dependencies required for violations-command-line..."
-    - apt update && apt upgrade -y
-    - apt install -y nodejs npm
-    - npm install -g npx
+    - echo "Running CheckStyle checks..."
+    - ./gradlew checkstyleMain checkstyleTest checkstyleGuiceConfig
     - echo "Converting CheckStyle reports to CodeClimate report..."
-    - npx violations-command-line@1.21.0 -cc $CODE_CLIMATE_FILE -print-violations false -diff-print-violations true -v "CHECKSTYLE" "." ".*checkstyle/.*\.xml$" "Checkstyle"
+    - violations-command-line -cc $CODE_CLIMATE_FILE -print-violations false -diff-print-violations true -v "CHECKSTYLE" "." ".*checkstyle/.*\.xml$" "Checkstyle"
     - sed -i.bak -e "s,$CI_PROJECT_DIR/,,g" $CODE_CLIMATE_FILE
   artifacts:
     reports:
       codequality: $CODE_CLIMATE_FILE
+    when: always
+    expire_in: 1 week
+  cache:
+    key: lint_checkstyle-$(date +%Y-%m)
+    paths:
+      - .gradle
+
+deploy_private:
+  stage: deploy
   rules:
-    - if: '$CODE_QUALITY_DISABLED'
-      when: never
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"' # Run code quality job in merge request pipelines
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'      # Run code quality job in pipelines on the master branch (but not in other branch pipelines)
-    - if: '$CI_COMMIT_TAG'                               # Run code quality job in pipelines for tags
+    - if: $DO_DEPLOY_PRIVATE == "true"
+  dependencies:
+    - build
+  script:
+    - ./gradlew -x check publish
+        -PDO_DEPLOY_PRIVATE="true"
+        -PDO_DEPLOY_PUBLIC="false"
+        -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER"
+        -PSIGNING_KEY="$SIGNING_KEY"
+        -PSIGNING_PASSWORD="$SIGNING_PASSWORD"
+  cache:
+    key: build_test_deploy-$(date +%Y-%m)
+    paths:
+      - .gradle
+    policy: pull
