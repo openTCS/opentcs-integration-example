@@ -45,11 +45,10 @@ build_code_quality_image:
     - echo "Building code quality image with tag ${CODEQUALITY_IMAGE_TAG}..."
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
-    - >-
-      /kaniko/executor
+    - '/kaniko/executor
       --context "${CI_PROJECT_DIR}/.gitlab/docker/codequality"
       --dockerfile "${CI_PROJECT_DIR}/.gitlab/docker/codequality/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}/codequality:${CODEQUALITY_IMAGE_TAG}"
+      --destination "${CI_REGISTRY_IMAGE}/codequality:${CODEQUALITY_IMAGE_TAG}"'
 
 build:
   stage: build
@@ -122,12 +121,9 @@ deploy_private:
   dependencies:
     - build
   script:
-    - ./gradlew -x check publish
+    - './gradlew -x check publish
         -PDO_DEPLOY_PRIVATE="true"
-        -PDO_DEPLOY_PUBLIC="false"
-        -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER"
-        -PSIGNING_KEY="$SIGNING_KEY"
-        -PSIGNING_PASSWORD="$SIGNING_PASSWORD"
+        -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER"'
   cache:
     key: build_test_deploy-$(date +%Y-%m)
     paths:
