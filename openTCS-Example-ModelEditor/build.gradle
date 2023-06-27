@@ -21,6 +21,7 @@ dependencies {
   implementation project(':openTCS-Example-Common')
   
   implementation group: 'org.opentcs', name: 'opentcs-modeleditor', version: openTcsBaselineVersion
+  implementation group: 'org.opentcs.commadapter.vehicle.vda5050', name: 'opentcs-commadapter-vda5050', version: vda5050CommAdapterVersion
   plantoverviewJar group: 'org.opentcs', name: 'opentcs-modeleditor', version: openTcsBaselineVersion, ext: 'jar'
 }
 

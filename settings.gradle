@@ -1,7 +1,5 @@
 rootProject.name = 'openTCS-Example'
 
-include 'openTCS-Contrib-Communication-TCP'
-include 'openTCS-Example-CommAdapter-Vehicle'
 include 'openTCS-Example-Common'
 include 'openTCS-Example-Documentation'
 include 'openTCS-Example-Kernel'

@@ -18,10 +18,10 @@ configurations {
 }
 
 dependencies {
-  implementation project(':openTCS-Example-CommAdapter-Vehicle')
   implementation project(':openTCS-Example-KernelExtension-Statistics')
 
   implementation group: 'org.opentcs', name: 'opentcs-kernel', version: openTcsBaselineVersion
+  implementation group: 'org.opentcs.commadapter.vehicle.vda5050', name: 'opentcs-commadapter-vda5050', version: vda5050CommAdapterVersion
   kernelJar group: 'org.opentcs', name: 'opentcs-kernel', version: openTcsBaselineVersion, ext: 'jar'
 }
 

@@ -67,7 +67,7 @@ asciidoctor {
   outputDir = commAdapterDocsDir
 	
   sources {
-    include 'opentcs-example-commadapter.adoc'
+    include 'opentcs-example-documentation.adoc'
   }
   
   outputOptions {

@@ -55,6 +55,7 @@
     <point name="Point-0013" xPosition="43906" yPosition="-28286" zPosition="0" vehicleOrientationAngle="NaN" type="HALT_POSITION">
         <outgoingPath name="Point-0013 --- Point-0015"/>
         <outgoingPath name="Point-0013 --- Point-0018"/>
+        <outgoingPath name="Point-0013 --- Point-0057"/>
         <pointLayout xPosition="18000" yPosition="-15000" xLabelOffset="-10" yLabelOffset="-20" layerId="0"/>
     </point>
     <point name="Point-0014" xPosition="47659" yPosition="-7646" zPosition="0" vehicleOrientationAngle="NaN" type="HALT_POSITION">
@@ -233,6 +234,26 @@
         <outgoingPath name="Point-0056 --- Point-0023"/>
         <pointLayout xPosition="-20000" yPosition="-8000" xLabelOffset="-10" yLabelOffset="-20" layerId="0"/>
     </point>
+    <point name="Point-0057" xPosition="8000" yPosition="-21000" zPosition="0" vehicleOrientationAngle="NaN" type="HALT_POSITION">
+        <outgoingPath name="Point-0057 --- Point-0058"/>
+        <pointLayout xPosition="8000" yPosition="-21000" xLabelOffset="-10" yLabelOffset="-20" layerId="0"/>
+    </point>
+    <point name="Point-0058" xPosition="-2000" yPosition="-21000" zPosition="0" vehicleOrientationAngle="NaN" type="HALT_POSITION">
+        <outgoingPath name="Point-0058 --- Point-0059"/>
+        <pointLayout xPosition="-2000" yPosition="-21000" xLabelOffset="-10" yLabelOffset="-20" layerId="0"/>
+    </point>
+    <point name="Point-0059" xPosition="-12000" yPosition="-21000" zPosition="0" vehicleOrientationAngle="NaN" type="HALT_POSITION">
+        <outgoingPath name="Point-0059 --- Point-0060"/>
+        <pointLayout xPosition="-12000" yPosition="-21000" xLabelOffset="-10" yLabelOffset="-20" layerId="0"/>
+    </point>
+    <point name="Point-0060" xPosition="-20000" yPosition="-21000" zPosition="0" vehicleOrientationAngle="NaN" type="HALT_POSITION">
+        <outgoingPath name="Point-0060 --- Point-0061"/>
+        <pointLayout xPosition="-20000" yPosition="-21000" xLabelOffset="-10" yLabelOffset="-20" layerId="0"/>
+    </point>
+    <point name="Point-0061" xPosition="-24000" yPosition="-15000" zPosition="0" vehicleOrientationAngle="NaN" type="HALT_POSITION">
+        <outgoingPath name="Point-0061 --- Point-0021"/>
+        <pointLayout xPosition="-24000" yPosition="-15000" xLabelOffset="-10" yLabelOffset="-20" layerId="0"/>
+    </point>
     <path name="Point-0001 --- Point-0002" sourcePoint="Point-0001" destinationPoint="Point-0002" length="4383" maxVelocity="1000" maxReverseVelocity="0" locked="false">
         <pathLayout connectionType="BEZIER" layerId="0">
             <controlPoint x="552" y="-183"/>
@@ -319,6 +340,12 @@
     </path>
     <path name="Point-0013 --- Point-0018" sourcePoint="Point-0013" destinationPoint="Point-0018" length="9381" maxVelocity="1000" maxReverseVelocity="0" locked="false">
         <pathLayout connectionType="DIRECT" layerId="0"/>
+    </path>
+    <path name="Point-0013 --- Point-0057" sourcePoint="Point-0013" destinationPoint="Point-0057" length="11638" maxVelocity="1000" maxReverseVelocity="0" locked="false">
+        <pathLayout connectionType="BEZIER" layerId="0">
+            <controlPoint x="280" y="320"/>
+            <controlPoint x="250" y="410"/>
+        </pathLayout>
     </path>
     <path name="Point-0014 --- Point-0008" sourcePoint="Point-0014" destinationPoint="Point-0008" length="5629" maxVelocity="1000" maxReverseVelocity="0" locked="false">
         <pathLayout connectionType="DIRECT" layerId="0"/>
@@ -539,34 +566,64 @@
             <controlPoint x="-467" y="150"/>
         </pathLayout>
     </path>
+    <path name="Point-0057 --- Point-0058" sourcePoint="Point-0057" destinationPoint="Point-0058" length="10000" maxVelocity="1000" maxReverseVelocity="0" locked="false">
+        <peripheralOperation completionRequired="true" executionTrigger="BEFORE_MOVEMENT" locationName="Fire door 01" name="Open"/>
+        <peripheralOperation completionRequired="false" executionTrigger="AFTER_MOVEMENT" locationName="Fire door 01" name="Close"/>
+        <pathLayout connectionType="DIRECT" layerId="0"/>
+    </path>
+    <path name="Point-0058 --- Point-0059" sourcePoint="Point-0058" destinationPoint="Point-0059" length="10000" maxVelocity="1000" maxReverseVelocity="0" locked="false">
+        <pathLayout connectionType="DIRECT" layerId="0"/>
+    </path>
+    <path name="Point-0059 --- Point-0060" sourcePoint="Point-0059" destinationPoint="Point-0060" length="8000" maxVelocity="1000" maxReverseVelocity="0" locked="false">
+        <pathLayout connectionType="DIRECT" layerId="0"/>
+    </path>
+    <path name="Point-0060 --- Point-0061" sourcePoint="Point-0060" destinationPoint="Point-0061" length="7211" maxVelocity="1000" maxReverseVelocity="0" locked="false">
+        <pathLayout connectionType="BEZIER" layerId="0">
+            <controlPoint x="-470" y="410"/>
+            <controlPoint x="-470" y="370"/>
+        </pathLayout>
+    </path>
+    <path name="Point-0061 --- Point-0021" sourcePoint="Point-0061" destinationPoint="Point-0021" length="8000" maxVelocity="1000" maxReverseVelocity="0" locked="false">
+        <pathLayout connectionType="DIRECT" layerId="0"/>
+    </path>
     <vehicle name="Vehicle-01" length="1000" energyLevelCritical="30" energyLevelGood="90" energyLevelFullyRecharged="95" energyLevelSufficientlyRecharged="45" maxVelocity="1000" maxReverseVelocity="1000">
-        <property name="example:vehicleHost" value="localhost"/>
-        <property name="example:vehiclePort" value="2000"/>
         <property name="loopback:loadOperation" value="Load cargo"/>
         <property name="loopback:unloadOperation" value="Unload cargo"/>
+        <property name="vda5050:interfaceName" value="myInterface"/>
+        <property name="vda5050:manufacturer" value="myManufacturer"/>
+        <property name="vda5050:serialNumber" value="1"/>
         <vehicleLayout color="#FF0000"/>
     </vehicle>
     <vehicle name="Vehicle-02" length="1000" energyLevelCritical="30" energyLevelGood="90" energyLevelFullyRecharged="95" energyLevelSufficientlyRecharged="45" maxVelocity="1000" maxReverseVelocity="1000">
-        <property name="example:vehicleHost" value="localhost"/>
-        <property name="example:vehiclePort" value="2001"/>
         <property name="loopback:loadOperation" value="Load cargo"/>
         <property name="loopback:unloadOperation" value="Unload cargo"/>
+        <property name="vda5050:interfaceName" value="myInterface"/>
+        <property name="vda5050:manufacturer" value="myManufacturer"/>
+        <property name="vda5050:serialNumber" value="2"/>
         <vehicleLayout color="#33FF00"/>
     </vehicle>
     <vehicle name="Vehicle-03" length="1000" energyLevelCritical="30" energyLevelGood="90" energyLevelFullyRecharged="95" energyLevelSufficientlyRecharged="45" maxVelocity="1000" maxReverseVelocity="1000">
-        <property name="example:vehicleHost" value="localhost"/>
-        <property name="example:vehiclePort" value="2002"/>
         <property name="loopback:loadOperation" value="Load cargo"/>
         <property name="loopback:unloadOperation" value="Unload cargo"/>
+        <property name="vda5050:interfaceName" value="myInterface"/>
+        <property name="vda5050:manufacturer" value="myManufacturer"/>
+        <property name="vda5050:serialNumber" value="3"/>
         <vehicleLayout color="#00FFFF"/>
     </vehicle>
     <vehicle name="Vehicle-04" length="1000" energyLevelCritical="30" energyLevelGood="90" energyLevelFullyRecharged="95" energyLevelSufficientlyRecharged="45" maxVelocity="1000" maxReverseVelocity="1000">
-        <property name="example:vehicleHost" value="localhost"/>
-        <property name="example:vehiclePort" value="2003"/>
         <property name="loopback:loadOperation" value="Load cargo"/>
         <property name="loopback:unloadOperation" value="Unload cargo"/>
+        <property name="vda5050:interfaceName" value="myInterface"/>
+        <property name="vda5050:manufacturer" value="myManufacturer"/>
+        <property name="vda5050:serialNumber" value="4"/>
         <vehicleLayout color="#FF33FF"/>
     </vehicle>
+    <locationType name="Fire door">
+        <allowedPeripheralOperation name="Close"/>
+        <allowedPeripheralOperation name="Open"/>
+        <property name="tcs:defaultLocationTypeSymbol" value="NONE"/>
+        <locationTypeLayout locationRepresentation="NONE"/>
+    </locationType>
     <locationType name="Recharge station">
         <allowedOperation name="CHARGE"/>
         <allowedOperation name="NOP"/>
@@ -590,6 +647,11 @@
         <property name="tcs:defaultLocationTypeSymbol" value="WORKING_GENERIC"/>
         <locationTypeLayout locationRepresentation="WORKING_GENERIC"/>
     </locationType>
+    <location name="Fire door 01" xPosition="3500" yPosition="-21000" zPosition="0" locked="false" type="Fire door">
+        <property name="tcs:defaultLocationSymbol" value="DEFAULT"/>
+        <property name="tcs:loopbackPeripheral" value="Value unknown"/>
+        <locationLayout xPosition="3500" yPosition="-21000" xLabelOffset="-10" yLabelOffset="-20" locationRepresentation="DEFAULT" layerId="0"/>
+    </location>
     <location name="Goods in north 01" xPosition="-28000" yPosition="11000" zPosition="0" locked="false" type="Transfer station">
         <link point="Point-0026"/>
         <property name="tcs:defaultLocationSymbol" value="DEFAULT"/>
@@ -604,6 +666,11 @@
         <link point="Point-0019"/>
         <property name="tcs:defaultLocationSymbol" value="DEFAULT"/>
         <locationLayout xPosition="-2000" yPosition="-18000" xLabelOffset="-10" yLabelOffset="-20" locationRepresentation="DEFAULT" layerId="0"/>
+    </location>
+    <location name="Goods in south 02" xPosition="-12000" yPosition="-24000" zPosition="0" locked="false" type="Transfer station">
+        <link point="Point-0059"/>
+        <property name="tcs:defaultLocationSymbol" value="DEFAULT"/>
+        <locationLayout xPosition="-12000" yPosition="-24000" xLabelOffset="-10" yLabelOffset="-20" locationRepresentation="DEFAULT" layerId="0"/>
     </location>
     <location name="Goods out 01" xPosition="-20000" yPosition="-15000" zPosition="0" locked="false" type="Transfer station">
         <link point="Point-0020"/>
@@ -668,22 +735,22 @@
     <block name="Block-0002" type="SINGLE_VEHICLE_ONLY">
         <member name="Point-0037 --- Point-0028"/>
         <member name="Point-0039 --- Point-0040"/>
-        <blockLayout color="#FF0000"/>
+        <blockLayout color="#0000FF"/>
     </block>
     <block name="Block-0003" type="SINGLE_VEHICLE_ONLY">
         <member name="Point-0049 --- Point-0038"/>
         <member name="Point-0052 --- Point-0044"/>
-        <blockLayout color="#FF0000"/>
+        <blockLayout color="#00CC00"/>
     </block>
     <block name="Block-0004" type="SINGLE_VEHICLE_ONLY">
         <member name="Point-0015 --- Point-0050"/>
         <member name="Point-0045 --- Point-0016"/>
         <member name="Point-0045 --- Point-0055"/>
-        <blockLayout color="#FF3300"/>
+        <blockLayout color="#0099FF"/>
     </block>
     <visualLayout name="VLayout-01" scaleX="50.0" scaleY="50.0">
         <layer id="0" ordinal="0" visible="true" name="Default layer" groupId="0"/>
         <layerGroup id="0" name="Default layer group" visible="true"/>
     </visualLayout>
-    <property name="tcs:modelFileLastModified" value="2022-03-10T15:16:01.356104100Z"/>
+    <property name="tcs:modelFileLastModified" value="2022-05-04T06:09:43Z"/>
 </model>

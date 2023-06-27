@@ -1,0 +1,9 @@
+= openTCS: Example Integration Documentation
+The openTCS developers
+openTCS-Example built on {buildDate}
+
+// TIP: Always have the comprehensive http://asciidoctor.org/docs/asciidoc-syntax-quick-reference[QuickReference] handy.
+
+== Content
+
+This is a placeholder for the actual integration project's documentation.
