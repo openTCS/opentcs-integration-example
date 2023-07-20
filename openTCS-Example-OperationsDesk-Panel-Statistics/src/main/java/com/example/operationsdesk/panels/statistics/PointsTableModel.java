@@ -47,7 +47,7 @@ class PointsTableModel
   /**
    * Creates a new instance.
    */
-  public PointsTableModel() {
+  PointsTableModel() {
   }
 
   /**

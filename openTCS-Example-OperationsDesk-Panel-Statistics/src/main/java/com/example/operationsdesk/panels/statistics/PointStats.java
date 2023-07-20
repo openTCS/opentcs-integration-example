@@ -30,7 +30,7 @@ class PointStats
    * @param name The name of the point.
    * @param totalRuntime The total runtime recorded.
    */
-  public PointStats(final String name, final long totalRuntime) {
+  PointStats(final String name, final long totalRuntime) {
     super(name, totalRuntime);
   }
 

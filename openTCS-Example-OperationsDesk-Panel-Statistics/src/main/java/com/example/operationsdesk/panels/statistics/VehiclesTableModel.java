@@ -53,7 +53,7 @@ class VehiclesTableModel
   /**
    * Creates a new instance.
    */
-  public VehiclesTableModel() {
+  VehiclesTableModel() {
   }
 
   /**

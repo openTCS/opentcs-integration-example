@@ -17,17 +17,20 @@ import org.opentcs.data.order.DriveOrder;
  */
 public interface LoadAction {
 
-  public static final String NONE = DriveOrder.Destination.OP_NOP;
+  /**
+   * A constant for no load action.
+   */
+  String NONE = DriveOrder.Destination.OP_NOP;
   /**
    * A constant for adding load.
    */
-  public static final String LOAD = "Load cargo";
+  String LOAD = "Load cargo";
   /**
    * A constant for removing load.
    */
-  public static final String UNLOAD = "Unload cargo";
+  String UNLOAD = "Unload cargo";
   /**
    * A constant for charging the battery.
    */
-  public static final String CHARGE = "Charge";
+  String CHARGE = "Charge";
 }

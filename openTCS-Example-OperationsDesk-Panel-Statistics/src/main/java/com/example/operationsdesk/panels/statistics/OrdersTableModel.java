@@ -53,7 +53,7 @@ class OrdersTableModel
   /**
    * Creates a new instance.
    */
-  public OrdersTableModel() {
+  OrdersTableModel() {
   }
 
   /**

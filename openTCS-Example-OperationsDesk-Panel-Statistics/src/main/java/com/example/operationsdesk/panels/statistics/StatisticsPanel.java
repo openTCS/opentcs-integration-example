@@ -64,8 +64,12 @@ public class StatisticsPanel
     initComponents();
 
     inputFileChooser.setMultiSelectionEnabled(false);
-    inputFileChooser.setFileFilter(new FileNameExtensionFilter(BUNDLE.getString("statisticsPanel.fileChooser_inputFile.fileFilter.description"),
-                                                               "txt"));
+    inputFileChooser.setFileFilter(
+        new FileNameExtensionFilter(
+            BUNDLE.getString("statisticsPanel.fileChooser_inputFile.fileFilter.description"),
+            "txt"
+        )
+    );
   }
 
   @Override

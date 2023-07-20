@@ -42,7 +42,7 @@ class OrderStats
    * @param name The name of the order.
    * @param totalRuntime The total runtime recorded.
    */
-  public OrderStats(final String name, final long totalRuntime) {
+  OrderStats(final String name, final long totalRuntime) {
     super(name, totalRuntime);
   }
 

@@ -50,7 +50,7 @@ class VehicleStats
    * @param name The name of the order.
    * @param totalRuntime The total runtime recorded.
    */
-  public VehicleStats(final String name, final long totalRuntime) {
+  VehicleStats(final String name, final long totalRuntime) {
     super(name, totalRuntime);
   }
 

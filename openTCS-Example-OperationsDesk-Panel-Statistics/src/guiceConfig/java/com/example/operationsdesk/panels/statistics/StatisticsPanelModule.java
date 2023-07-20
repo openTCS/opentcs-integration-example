@@ -24,6 +24,12 @@ public class StatisticsPanelModule
    */
   private static final Logger LOG = LoggerFactory.getLogger(StatisticsPanelModule.class);
 
+  /**
+   * Creates a new instance.
+   */
+  public StatisticsPanelModule() {
+  }
+
   @Override
   protected void configure() {
     StatisticsPanelConfiguration configuration

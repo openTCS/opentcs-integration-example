@@ -18,6 +18,9 @@ import org.opentcs.configuration.ConfigurationPrefix;
 @ConfigurationPrefix(StatisticsCollectorConfiguration.PREFIX)
 public interface StatisticsCollectorConfiguration {
 
+  /**
+   * The prefix for all configuration entries here.
+   */
   String PREFIX = "example.statisticscollector";
 
   @ConfigurationEntry(
