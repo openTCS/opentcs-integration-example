@@ -9,8 +9,6 @@ package com.example.common.statistics;
 
 /**
  * Defines labels for events relevant to statistics.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 public enum StatisticsEvent {
 

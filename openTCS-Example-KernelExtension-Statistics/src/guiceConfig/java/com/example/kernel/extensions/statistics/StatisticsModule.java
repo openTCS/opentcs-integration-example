@@ -13,8 +13,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Configures the statistics extension.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 public class StatisticsModule
     extends KernelInjectionModule {

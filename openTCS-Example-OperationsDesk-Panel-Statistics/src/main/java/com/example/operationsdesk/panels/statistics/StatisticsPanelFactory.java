@@ -18,8 +18,6 @@ import org.opentcs.components.plantoverview.PluggablePanelFactory;
 
 /**
  * Creates statistics panels.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 public class StatisticsPanelFactory
     implements PluggablePanelFactory {

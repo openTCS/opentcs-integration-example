@@ -13,8 +13,6 @@ import static org.opentcs.util.Assertions.checkArgument;
 
 /**
  * A single record in the dump file.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 public class StatisticsRecord {
 

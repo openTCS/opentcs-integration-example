@@ -9,8 +9,6 @@ package com.example.operationsdesk.panels.statistics;
 
 /**
  * Statistics data for a vehicle.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 class VehicleStats
     extends Stats {

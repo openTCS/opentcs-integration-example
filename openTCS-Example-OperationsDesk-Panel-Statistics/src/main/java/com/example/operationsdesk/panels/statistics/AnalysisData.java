@@ -29,8 +29,6 @@ import java.util.TreeMap;
 
 /**
  * Aggregates statistics records.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 final class AnalysisData {
 

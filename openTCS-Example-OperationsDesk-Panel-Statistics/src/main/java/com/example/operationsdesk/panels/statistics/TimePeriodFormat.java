@@ -9,8 +9,6 @@ package com.example.operationsdesk.panels.statistics;
 
 /**
  * Utility methods for formatting time periods.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 final class TimePeriodFormat {
 

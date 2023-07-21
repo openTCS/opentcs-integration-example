@@ -15,8 +15,6 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  * A table model for vehicle statistics.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 class VehiclesTableModel
     extends AbstractTableModel {

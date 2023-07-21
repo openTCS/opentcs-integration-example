@@ -24,8 +24,6 @@ import org.slf4j.LoggerFactory;
 /**
  * Collects data from kernel events and logs interesting events to a file that
  * can later be processed for statistical purposes.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 public class StatisticsCollector
     implements KernelExtension {

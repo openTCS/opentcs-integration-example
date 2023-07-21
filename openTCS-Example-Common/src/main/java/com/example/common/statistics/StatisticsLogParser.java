@@ -22,8 +22,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Parses a statistics log file and creates log record instances from it.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 public class StatisticsLogParser {
 

@@ -12,8 +12,6 @@ import org.opentcs.configuration.ConfigurationPrefix;
 
 /**
  * Configuration entries for the statistics collector.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 @ConfigurationPrefix(StatisticsCollectorConfiguration.PREFIX)
 public interface StatisticsCollectorConfiguration {

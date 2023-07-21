@@ -9,8 +9,6 @@ package com.example.operationsdesk.panels.statistics;
 
 /**
  * Statistics data for a transport order.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 class OrderStats
     extends Stats {

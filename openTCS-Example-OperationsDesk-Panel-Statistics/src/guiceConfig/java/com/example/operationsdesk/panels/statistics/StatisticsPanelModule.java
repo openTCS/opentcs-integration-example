@@ -13,8 +13,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Configures the statistics panel.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 public class StatisticsPanelModule
     extends PlantOverviewInjectionModule {

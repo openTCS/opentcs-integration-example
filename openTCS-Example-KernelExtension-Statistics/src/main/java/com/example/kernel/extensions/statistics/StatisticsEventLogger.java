@@ -29,8 +29,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Writes received events to a file.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 public class StatisticsEventLogger
     implements EventHandler,

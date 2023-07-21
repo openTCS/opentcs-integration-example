@@ -15,8 +15,6 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  * A table model for point statistics.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 class PointsTableModel
     extends AbstractTableModel {

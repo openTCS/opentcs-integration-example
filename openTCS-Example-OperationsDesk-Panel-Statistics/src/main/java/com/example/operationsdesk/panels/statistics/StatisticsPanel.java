@@ -22,8 +22,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * A panel for displaying statistics data.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 public class StatisticsPanel
     extends PluggablePanel {

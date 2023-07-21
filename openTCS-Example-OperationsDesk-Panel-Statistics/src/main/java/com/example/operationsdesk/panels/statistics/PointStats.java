@@ -9,8 +9,6 @@ package com.example.operationsdesk.panels.statistics;
 
 /**
  * Statistics data for a point.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 class PointStats
     extends Stats {

@@ -15,8 +15,6 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  * A table model for order statistics.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 class OrdersTableModel
     extends AbstractTableModel {

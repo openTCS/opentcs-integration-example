@@ -11,8 +11,6 @@ import java.util.Objects;
 
 /**
  * Statistics data for an object.
- *
- * @author Stefan Walter (Fraunhofer IML)
  */
 abstract class Stats {
 

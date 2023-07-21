@@ -9,8 +9,6 @@ package com.example.operationsdesk.panels.statistics;
 
 /**
  * Defines constants regarding internationalization.
- *
- * @author Martin Grzenia (Fraunhofer IML)
  */
 public interface I18nPlantOverviewPanelStatistics {
 
