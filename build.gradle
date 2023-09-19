@@ -12,7 +12,7 @@ buildscript {
     // Stats plugin
     classpath 'org.kordamp.gradle:stats-gradle-plugin:0.2.2'
     // JaCoCo log plugin
-    classpath 'gradle.plugin.org.barfuin.gradle.jacocolog:gradle-jacoco-log:2.0.0'
+    classpath 'org.barfuin.gradle.jacocolog:gradle-jacoco-log:3.1.0'
   }
 }
 
@@ -23,8 +23,6 @@ apply plugin: 'org.barfuin.gradle.jacocolog'
 
 apply from: "${rootDir}/gradle/common.gradle"
 apply from: "${rootDir}/gradle/publishing-common.gradle"
-
-evaluationDependsOnChildren()
 
 repositories {
   mavenLocal()
@@ -38,7 +36,6 @@ dependencies {
 
 subprojects {
   apply from: rootProject.file('gradle/common.gradle')
-  apply from: rootProject.file('gradle/publishing-java.gradle')
 }
 
 distributions {
@@ -62,7 +59,7 @@ distributions {
 }
 
 task statsAggregate(type: org.kordamp.gradle.stats.AggregateStatsReportTask) {
-  dependsOn subprojects*.stats
+  subprojects.each { dependsOn("${it.name}:stats") }
 }
 
 task subDists {
@@ -76,18 +73,18 @@ task subDists {
 installDist.dependsOn subDists
 
 distZip {
-  classifier = 'bin'
+  archiveClassifier = 'bin'
   dependsOn subDists
 }
 
 distTar {
-  classifier = 'bin'
+  enabled = false
+  archiveClassifier = 'bin'
   dependsOn subDists
-  compression = Compression.GZIP
 }
 
 task distSrcZip(type: Zip) {
-  classifier = 'src'
+  archiveClassifier = 'src'
   from "${rootDir}"
 
   includes << 'config/**'
@@ -112,7 +109,7 @@ artifacts {
 }
 
 build {
-  dependsOn subprojects*.build
+  subprojects.each { dependsOn("${it.name}:build") }
   dependsOn installDist
 }
 
@@ -140,7 +137,7 @@ task cloneProject(type: JavaExec) {
 }
 // tag::cloneTask
 
-publish.dependsOn subprojects*.publish
+subprojects.each { publish.dependsOn("${it.name}:publish") }
 
 publishing {
   publications {

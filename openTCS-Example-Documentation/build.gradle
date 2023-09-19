@@ -8,6 +8,7 @@ apply from: "${rootDir}/gradle/dependency-versions.gradle"
 apply from: "${rootDir}/gradle/java-project.gradle"
 apply from: "${rootDir}/gradle/java-artifacts.gradle"
 apply from: "${rootDir}/gradle/java-codequality.gradle"
+apply from: "${rootDir}/gradle/publishing-java.gradle"
 apply plugin: 'org.kordamp.gradle.stats'
 
 apply plugin: 'distribution'
@@ -53,6 +54,19 @@ task renderDocs {
   dependsOn 'asciidoctor'
 }
 installDist.dependsOn renderDocs
+
+distTar {
+  enabled = false
+  dependsOn renderDocs
+  dependsOn unzipBaselineDoc
+  archiveBaseName = archiveBaseName.get().toLowerCase()
+}
+
+distZip {
+  dependsOn renderDocs
+  dependsOn unzipBaselineDoc
+  archiveBaseName = archiveBaseName.get().toLowerCase()
+}
 
 asciidoctor {
   // Document type: article (default), book, inline, manpage)

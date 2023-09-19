@@ -1,7 +1,7 @@
 apply plugin: 'java-library'
 apply plugin: 'jacoco'
 
-archivesBaseName = name.toLowerCase()
+base.archivesName = name.toLowerCase()
 
 repositories {
   mavenLocal()
@@ -38,7 +38,7 @@ compileTestJava {
 }
 
 task sourcesJar(type: Jar, dependsOn: classes, description: 'Creates a jar from the source files.') {
-  classifier = 'sources'
+  archiveClassifier = 'sources'
   from sourceSets.main.allSource
 }
 
