@@ -19,7 +19,7 @@ configurations {
 
 dependencies {
   implementation project(':openTCS-Example-Common')
-  
+
   implementation group: 'org.opentcs', name: 'opentcs-modeleditor', version: openTcsBaselineVersion
   implementation group: 'org.opentcs.commadapter.vehicle.vda5050', name: 'opentcs-commadapter-vda5050', version: vda5050CommAdapterVersion
   plantoverviewJar group: 'org.opentcs', name: 'opentcs-modeleditor', version: openTcsBaselineVersion, ext: 'jar'
@@ -54,11 +54,12 @@ task release {
 
 run {
   systemProperties(['java.util.logging.config.file':'./config/logging.config',\
-                    'java.security.policy':'file:./config/java.policy',\
                     'sun.java2d.d3d':'false',\
                     'opentcs.base':'.',\
                     'opentcs.home':'.',\
-                    'opentcs.cfg4j.reload.interval':'10000'])
+                    'opentcs.cfg4j.reload.interval':'10000',\
+                    'opentcs.configuration.reload.interval':'10000',\
+                    'opentcs.configuration.provider':'gestalt'])
   jvmArgs('-XX:-OmitStackTraceInFastThrow',\
           '-splash:bin/splash-image.gif')
 }

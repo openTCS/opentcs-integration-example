@@ -54,9 +54,10 @@ task release {
 
 run {
   systemProperties(['java.util.logging.config.file':'./config/logging.config',\
-                    'java.security.policy':'file:./config/java.policy',\
                     'opentcs.base':'.',\
                     'opentcs.home':'.',\
-                    'opentcs.cfg4j.reload.interval':'10000'])
+                    'opentcs.cfg4j.reload.interval':'10000',\
+                    'opentcs.configuration.reload.interval':'10000',\
+                    'opentcs.configuration.provider':'gestalt'])
   jvmArgs('-XX:-OmitStackTraceInFastThrow')
 }
