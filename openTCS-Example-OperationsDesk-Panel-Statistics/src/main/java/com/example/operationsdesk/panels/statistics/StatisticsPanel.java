@@ -58,6 +58,7 @@ public class StatisticsPanel
   /**
    * Creates a new StatisticsPanel.
    */
+  @SuppressWarnings("this-escape")
   public StatisticsPanel() {
     initComponents();
 

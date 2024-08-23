@@ -12,7 +12,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import static java.util.Objects.requireNonNull;
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import org.opentcs.components.kernel.KernelExtension;
 import org.opentcs.customizations.ApplicationEventBus;
 import org.opentcs.customizations.ApplicationHome;
