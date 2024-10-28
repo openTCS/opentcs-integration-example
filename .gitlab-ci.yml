@@ -57,14 +57,18 @@ build:
   script:
     - ./gradlew -x check build testClasses -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER"
   artifacts:
+    name: 'opentcs-integration-project-build-b$CI_PIPELINE_IID'
     paths:
-      - build/distributions/*.zip
+      - .gradle
       - openTCS-*/build/classes/
-      - openTCS-*/build/docs/
       - openTCS-*/build/generated/
       - openTCS-*/build/libs/
       - openTCS-*/build/resources/
       - openTCS-*/build/tmp/
+    exclude:
+      - .gradle/.tmp/**/*
+      - .gradle/caches/**/*
+      - .gradle/wrapper/**/*
     expire_in: 1 week
   cache:
     key: build_test_deploy-$(date +%Y-%m)
@@ -77,10 +81,14 @@ test:
   dependencies:
     - build
   script:
+    - echo "Touching build results to prevent Gradle rebuilding them..."
+    - find .gradle | xargs touch
+    - find . -regex '\./openTCS-[^/]+/build/.*' | xargs touch
     - echo "Running unit tests..."
     - ./gradlew test jacocoLogAggregatedCoverage -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER"
   coverage: '/Branch Coverage: ([0-9.]+)%/'
   artifacts:
+    name: 'opentcs-integration-project-test-b$CI_PIPELINE_IID'
     reports:
       junit: openTCS-*/build/test-results/test/TEST-*.xml
     when: always
@@ -99,6 +107,9 @@ lint:
   dependencies:
     - build
   script:
+    - echo "Touching build results to prevent Gradle rebuilding them..."
+    - find .gradle | xargs touch
+    - find . -regex '\./openTCS-[^/]+/build/.*' | xargs touch
     - echo "Running CheckStyle checks..."
     - ./gradlew checkstyleMain checkstyleTest checkstyleGuiceConfig
     - echo "Converting CheckStyle reports to CodeClimate report..."
