@@ -98,6 +98,21 @@ test:
     paths:
       - .gradle
 
+test-cloning:
+  stage: test
+  interruptible: true
+  dependencies: []
+  script:
+    - ./gradlew cloneProject -PintegrationName=MyFavouriteCustomer -PpackageName=com.acme
+    - test -d build/openTCS-Integration-MyFavouriteCustomer
+        || (echo "Expected project directory not found." ; find build/ ; false)
+    - test -d build/openTCS-Integration-MyFavouriteCustomer/openTCS-MyFavouriteCustomer-Common/src/main/java/com/acme
+        || (echo "Expected package directory not found." ; find build/ ; false)
+  cache:
+    key: test_cloning-$(date +%Y-%m)
+    paths:
+      - .gradle
+
 lint:
   stage: test
   interruptible: true
