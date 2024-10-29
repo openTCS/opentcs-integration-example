@@ -13,11 +13,9 @@ String basePath = ''
 
 String oldIntegrationName = 'Example'
 String newIntegrationName = args[0]
-String oldClassPrefix = 'Example'
-String newClassPrefix = args[1]
 String oldPackageName = "com.example"
 String oldPackagePath = oldPackageName.replace(".", "/")
-String newPackageName = args[2]
+String newPackageName = args[1]
 String newPackagePath = newPackageName.replace(".", "/")
 
 // The path to the source project
@@ -53,16 +51,10 @@ destFile.eachFile { dir ->
 
 // Change the source files name and package information.
 destFile.eachFileRecurse(FileType.FILES) { file ->
-  // For all java files, change the class names and file names to contain the new class prefix and
-  // change packages and paths to correspond to the new package name
+  // For all java files, change packages and paths to correspond to the new package name
   if (file.name.matches("(.+).java")) {
-    file.text = file.text.replace(oldClassPrefix, newClassPrefix)
     file.text = file.text.replace(oldPackageName, newPackageName)
     file.text = file.text.replace(oldPackagePath, newPackagePath)
-    if (file.name.matches("^" + oldClassPrefix + "(.+)")) {
-      String newName = file.getPath().replace(oldClassPrefix, newClassPrefix)
-      file.renameTo(newName)
-    }
   }
 
   // For all form files, change paths to correspond to the new package name
@@ -70,28 +62,17 @@ destFile.eachFileRecurse(FileType.FILES) { file ->
     file.text = file.text.replace(oldPackagePath, newPackagePath)
   }
 
-  // For all guice modules, change the class names and file names to contain the new class prefix
-  // and change packages to correspond to the new package name
+  // For all guice modules, change packages to correspond to the new package name
   if (file.name.matches("(.+).KernelInjectionModule")
       || file.name.matches("(.+).ControlCenterInjectionModule")
       || file.name.matches("(.+).PlantOverviewInjectionModule")) {
-    file.text = file.text.replace(oldClassPrefix, newClassPrefix)
     file.text = file.text.replace(oldPackageName, newPackageName)
-    if (file.name.matches("^" + oldClassPrefix + "(.+)")) {
-      String newName = file.getPath().replace(oldClassPrefix, newClassPrefix)
-      file.renameTo(newName)
-    }
   }
 
   // Adjust the build.gradle files for all sub-projects
   if (file.name.equals("build.gradle")) {
     file.text = file.text.replace(oldPackagePath, newPackagePath)
     file.text = file.text.replace(oldIntegrationName, newIntegrationName)
-  }
-
-  // For all resource bundles, change the class names to contain the new class prefix
-  if (file.name.matches("Bundle(.*).properties")) {
-    file.text = file.text.replace(oldClassPrefix, newClassPrefix)
   }
 
   // For all asciidoctor files, change packages to correspond to the new package name

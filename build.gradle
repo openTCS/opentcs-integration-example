@@ -116,24 +116,20 @@ build {
 // tag::cloneTask
 task cloneProject(type: JavaExec) {
   main = 'org.opentcs.scripts.CloneScript'
- 
+
   classpath = sourceSets.main.runtimeClasspath
- 
+
   def integrationName = 'MyCustomProject'
-  def classPrefix = 'Custom'
   def packageName = 'com.example'
   if (project.hasProperty('integrationName')) {
     integrationName = project.getProperty('integrationName')
   }
-  if (project.hasProperty('classPrefix')) {
-    classPrefix = project.getProperty('classPrefix')
-  }
   if (project.hasProperty('packageName')) {
     packageName = project.getProperty('packageName')
   }
-  
+
   // Pass command-line argument to script, if any.
-  args integrationName, classPrefix, packageName
+  args integrationName, packageName
 }
 // tag::cloneTask
 
