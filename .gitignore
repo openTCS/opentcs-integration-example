@@ -1,3 +1,6 @@
+/.idea/*
+!/.idea/codeStyles
+!/.idea/runConfigurations
 /.gradle/
 /build/
 /.nb-gradle/
