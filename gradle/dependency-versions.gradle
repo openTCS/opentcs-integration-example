@@ -1,2 +1,2 @@
-project.ext.openTcsBaselineVersion = '6.1.2'
-project.ext.vda5050CommAdapterVersion = '0.22.0'
+project.ext.openTcsBaselineVersion = '6.4.0'
+project.ext.vda5050CommAdapterVersion = '0.23.0'
