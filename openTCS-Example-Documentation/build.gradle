@@ -1,15 +1,13 @@
 plugins {
   // To use AsciiDoctor for documentation
-  id 'org.asciidoctor.jvm.convert' version '3.3.2'
-  id 'org.asciidoctor.jvm.pdf' version '3.3.2'
+  alias(libs.plugins.asciidocor.jvm.convert)
+  alias(libs.plugins.asciidocor.jvm.pdf)
 }
 
-apply from: "${rootDir}/gradle/dependency-versions.gradle"
 apply from: "${rootDir}/gradle/java-project.gradle"
 apply from: "${rootDir}/gradle/java-artifacts.gradle"
 apply from: "${rootDir}/gradle/java-codequality.gradle"
 apply from: "${rootDir}/gradle/publishing-java.gradle"
-apply plugin: 'org.kordamp.gradle.stats'
 
 apply plugin: 'distribution'
 
@@ -24,7 +22,7 @@ configurations {
 }
 
 dependencies {
-  baselineDoc group: 'org.opentcs', name: 'opentcs-documentation', version: openTcsBaselineVersion, ext: 'zip'
+  baselineDoc group: 'org.opentcs', name: 'opentcs-documentation', version: libs.versions.opentcs.baseline.get(), ext: 'zip'
 }
 
 distributions {
@@ -75,21 +73,21 @@ asciidoctor {
   // Where to look for AsciiDoc files. Default: src/docs/asciidoc
   // sourceDir = file("src/docs/users-guide")
   baseDirFollowsSourceDir()
-  
+
   // Where to put the rendered documents. Default: $buildDir/asciidoc.
   outputDir = commAdapterDocsDir
-	
+
   sources {
     include 'opentcs-example-documentation.adoc'
   }
-  
+
   outputOptions {
     // Whether to put backends' outputs into separate subdirectories
     separateOutputDirs = false
     // Set the backends the processor should use: html5 (default), docbook, manpage, pdf, deckjs
     backends = ['html5', 'pdf']
   }
-  
+
   attributes 'source-highlighter': 'coderay',
              'coderay-linenums-mode': 'table',
   // Custom attributes that we want to be substituted in the document.
@@ -138,7 +136,7 @@ asciidoctor {
       exclude 'themes'
     }
   }
-  
+
   doLast{
     delete "$commAdapterDocsDir/.asciidoctor"
   }

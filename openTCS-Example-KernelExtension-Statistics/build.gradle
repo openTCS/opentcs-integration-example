@@ -1,16 +1,14 @@
-apply from: "${rootDir}/gradle/dependency-versions.gradle"
 apply from: "${rootDir}/gradle/java-project.gradle"
 apply from: "${rootDir}/gradle/java-artifacts.gradle"
 apply from: "${rootDir}/gradle/java-codequality.gradle"
 apply from: "${rootDir}/gradle/guice-project.gradle"
 apply from: "${rootDir}/gradle/publishing-java.gradle"
-apply plugin: 'org.kordamp.gradle.stats'
 
 dependencies {
   implementation project(':openTCS-Example-Common')
 
-  implementation group: 'org.opentcs', name: 'opentcs-api-injection', version: openTcsBaselineVersion
-  implementation group: 'org.opentcs', name: 'opentcs-common', version: openTcsBaselineVersion
+  implementation libs.opentcs.api.injection
+  implementation libs.opentcs.common
 }
 
 task release {

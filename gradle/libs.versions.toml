@@ -1,0 +1,44 @@
+[versions]
+# openTCS dependency versions
+opentcs-baseline = "6.4.0"
+opentcs-commadapter-vda5050 = "0.23.0"
+# Other dependency versions
+checkstyle = "10.12.3"
+commons-io = "2.13.0"
+google-code-findbugs = "3.0.2"
+slf4j = "1.7.36"
+# Test dependency versions
+assertj = "3.25.2"
+hamcrest = "2.2"
+junit = "5.10.1"
+mockito = "5.10.0"
+# Plugin versions
+asciidoctor = "3.3.2"
+jacocolog = "3.1.0"
+
+[libraries]
+# openTCS dependencies
+opentcs-api-injection = { group = "org.opentcs", name = "opentcs-api-injection", version.ref = "opentcs-baseline" }
+opentcs-commadapter-vda5050 = { group = "org.opentcs.commadapter.vehicle.vda5050", name = "opentcs-commadapter-vda5050", version.ref = "opentcs-commadapter-vda5050" }
+opentcs-common = { group = "org.opentcs", name = "opentcs-common", version.ref = "opentcs-baseline" }
+opentcs-kernel = { group = "org.opentcs", name = "opentcs-kernel", version.ref = "opentcs-baseline" }
+opentcs-kernelcontrolcenter = { group = "org.opentcs", name = "opentcs-kernelcontrolcenter", version.ref = "opentcs-baseline" }
+opentcs-modeleditor = { group = "org.opentcs", name = "opentcs-modeleditor", version.ref = "opentcs-baseline" }
+opentcs-operationsdesk = { group = "org.opentcs", name = "opentcs-operationsdesk", version.ref = "opentcs-baseline" }
+# Other dependencies
+commons-io = { group = "commons-io", name = "commons-io", version.ref = "commons-io" }
+google-code-findbugs = { group = "com.google.code.findbugs", name = "jsr305", version.ref = "google-code-findbugs" }
+slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j" }
+slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version.ref = "slf4j" }
+# Test dependencies
+assertj = { group = "org.assertj", name = "assertj-core", version.ref = "assertj" }
+hamcrest = { group = "org.hamcrest", name = "hamcrest", version.ref = 'hamcrest' }
+junit-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit" }
+junit-jupiter-params = { group = "org.junit.jupiter", name = "junit-jupiter-params", version.ref = "junit" }
+junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }
+mockito = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+
+[plugins]
+asciidocor-jvm-convert = { id = "org.asciidoctor.jvm.convert", version.ref = "asciidoctor" }
+asciidocor-jvm-pdf = { id = "org.asciidoctor.jvm.pdf", version.ref = "asciidoctor" }
+jacocolog = { id = "org.barfuin.gradle.jacocolog", version.ref = "jacocolog" }

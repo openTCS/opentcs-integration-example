@@ -9,20 +9,20 @@ repositories {
 }
 
 dependencies {
-  implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
+  implementation libs.slf4j.api
 
-  compileOnly group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
-  testCompileOnly group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+  compileOnly libs.google.code.findbugs
+  testCompileOnly libs.google.code.findbugs
 
-  testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.1'
-  testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.10.1'
-  testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.1'
+  testImplementation libs.junit.jupiter.api
+  testImplementation libs.junit.jupiter.params
+  testImplementation libs.junit.jupiter.engine
 
-  testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
-  testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.10.0'
-  testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.25.2'
+  testImplementation libs.hamcrest
+  testImplementation libs.mockito
+  testImplementation libs.assertj
 
-  testRuntimeOnly group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.36'
+  testRuntimeOnly libs.slf4j.simple
 }
 
 compileJava {

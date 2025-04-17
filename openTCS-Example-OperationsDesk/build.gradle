@@ -1,10 +1,8 @@
-apply from: "${rootDir}/gradle/dependency-versions.gradle"
 apply from: "${rootDir}/gradle/java-project.gradle"
 apply from: "${rootDir}/gradle/java-artifacts.gradle"
 apply from: "${rootDir}/gradle/java-codequality.gradle"
 apply from: "${rootDir}/gradle/guice-application.gradle"
 apply from: "${rootDir}/gradle/publishing-java.gradle"
-apply plugin: 'org.kordamp.gradle.stats'
 
 if (!hasProperty('mainClass')) {
   ext.mainClass = 'org.opentcs.operationsdesk.RunOperationsDesk'
@@ -21,8 +19,8 @@ dependencies {
   implementation project(':openTCS-Example-Common')
   implementation project(':openTCS-Example-OperationsDesk-Panel-Statistics')
 
-  implementation group: 'org.opentcs', name: 'opentcs-operationsdesk', version: openTcsBaselineVersion
-  plantoverviewJar group: 'org.opentcs', name: 'opentcs-operationsdesk', version: openTcsBaselineVersion, ext: 'jar'
+  implementation libs.opentcs.operationsdesk
+  plantoverviewJar group: 'org.opentcs', name: 'opentcs-operationsdesk', version: libs.versions.opentcs.baseline.get(), ext: 'jar'
 }
 
 distributions {

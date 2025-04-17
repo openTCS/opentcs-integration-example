@@ -1,13 +1,10 @@
-apply from: "${rootDir}/gradle/dependency-versions.gradle"
 apply from: "${rootDir}/gradle/java-project.gradle"
 apply from: "${rootDir}/gradle/java-artifacts.gradle"
 apply from: "${rootDir}/gradle/java-codequality.gradle"
 apply from: "${rootDir}/gradle/publishing-java.gradle"
-apply plugin: 'org.kordamp.gradle.stats'
 
 dependencies {
-  implementation group: 'org.opentcs', name: 'opentcs-api-base', version: openTcsBaselineVersion
-  implementation group: 'org.opentcs', name: 'opentcs-api-injection', version: openTcsBaselineVersion
+  implementation libs.opentcs.api.injection
 }
 
 processResources.doLast {
@@ -16,7 +13,7 @@ processResources.doLast {
   props.setProperty('opentcs.customization.name', 'Example')
   props.setProperty('opentcs.customization.version', version)
   props.setProperty('opentcs.customization.builddate', project.ext.buildDate)
-  
+
   new File(sourceSets.main.output.resourcesDir, 'opentcs-customization.properties').withWriter() {
     props.store(it, null)
   }

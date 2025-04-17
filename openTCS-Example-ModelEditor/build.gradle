@@ -1,10 +1,8 @@
-apply from: "${rootDir}/gradle/dependency-versions.gradle"
 apply from: "${rootDir}/gradle/java-project.gradle"
 apply from: "${rootDir}/gradle/java-artifacts.gradle"
 apply from: "${rootDir}/gradle/java-codequality.gradle"
 apply from: "${rootDir}/gradle/guice-application.gradle"
 apply from: "${rootDir}/gradle/publishing-java.gradle"
-apply plugin: 'org.kordamp.gradle.stats'
 
 if (!hasProperty('mainClass')) {
   ext.mainClass = 'org.opentcs.modeleditor.RunModelEditor'
@@ -20,9 +18,9 @@ configurations {
 dependencies {
   implementation project(':openTCS-Example-Common')
 
-  implementation group: 'org.opentcs', name: 'opentcs-modeleditor', version: openTcsBaselineVersion
-  implementation group: 'org.opentcs.commadapter.vehicle.vda5050', name: 'opentcs-commadapter-vda5050', version: vda5050CommAdapterVersion
-  plantoverviewJar group: 'org.opentcs', name: 'opentcs-modeleditor', version: openTcsBaselineVersion, ext: 'jar'
+  implementation libs.opentcs.modeleditor
+  implementation libs.opentcs.commadapter.vda5050
+  plantoverviewJar group: 'org.opentcs', name: 'opentcs-modeleditor', version: libs.versions.opentcs.baseline.get(), ext: 'jar'
 }
 
 distributions {

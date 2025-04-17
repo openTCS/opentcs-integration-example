@@ -6,20 +6,15 @@ buildscript {
       url "https://plugins.gradle.org/m2/"
     }
   }
-  dependencies {
-    // License plugin
-    classpath 'gradle.plugin.nl.javadude.gradle.plugins:license-gradle-plugin:0.14.0'
-    // Stats plugin
-    classpath 'org.kordamp.gradle:stats-gradle-plugin:0.2.2'
-    // JaCoCo log plugin
-    classpath 'org.barfuin.gradle.jacocolog:gradle-jacoco-log:3.1.0'
-  }
+}
+
+plugins {
+  alias(libs.plugins.jacocolog)
 }
 
 apply plugin: 'base'
 apply plugin: 'distribution'
 apply plugin: 'groovy'
-apply plugin: 'org.barfuin.gradle.jacocolog'
 
 apply from: "${rootDir}/gradle/common.gradle"
 apply from: "${rootDir}/gradle/publishing-common.gradle"
@@ -31,7 +26,7 @@ repositories {
 
 dependencies {
   implementation localGroovy()
-  implementation group: 'commons-io', name: 'commons-io', version: '2.13.0'
+  implementation libs.commons.io
 }
 
 subprojects {
@@ -56,10 +51,6 @@ distributions {
       project(':openTCS-Example-Documentation').ext.collectableDistDir
     }
   }
-}
-
-task statsAggregate(type: org.kordamp.gradle.stats.AggregateStatsReportTask) {
-  subprojects.each { dependsOn("${it.name}:stats") }
 }
 
 task subDists {
