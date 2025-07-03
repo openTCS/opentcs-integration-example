@@ -4,7 +4,7 @@ opentcs-baseline = "6.4.0"
 opentcs-commadapter-vda5050 = "0.23.0"
 # Other dependency versions
 checkstyle = "10.12.3"
-commons-io = "2.13.0"
+commons-io = "2.19.0"
 google-code-findbugs = "3.0.2"
 slf4j = "2.0.17"
 # Test dependency versions
