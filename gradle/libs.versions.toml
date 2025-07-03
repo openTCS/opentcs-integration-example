@@ -6,7 +6,7 @@ opentcs-commadapter-vda5050 = "0.23.0"
 checkstyle = "10.12.3"
 commons-io = "2.13.0"
 google-code-findbugs = "3.0.2"
-slf4j = "1.7.36"
+slf4j = "2.0.17"
 # Test dependency versions
 assertj = "3.27.3"
 hamcrest = "3.0"
