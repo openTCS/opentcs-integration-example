@@ -13,7 +13,7 @@ hamcrest = "3.0"
 junit = "6.0.0"
 mockito = "5.20.0"
 # Plugin versions
-asciidoctor = "4.0.4"
+asciidoctor = "4.0.5"
 jacocolog = "3.1.0"
 
 [libraries]
