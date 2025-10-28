@@ -45,7 +45,11 @@ destFile.eachFile { dir ->
     renamePackages(dir.path + "/src/test/resources/", oldPackagePath, newPackagePath)
 
     String newName = dir.getPath().replace('-' + oldIntegrationName + '-', '-' + newIntegrationName + '-')
-    dir.renameTo(newName)
+    boolean result = dir.renameTo(newName)
+    if (!result) {
+      System.err.println("Could not rename directory " + dir.getPath() + " to " + newName)
+      System.exit(1)
+    }
   }
 }
 
