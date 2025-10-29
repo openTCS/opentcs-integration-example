@@ -5,29 +5,29 @@ apply from: "${rootDir}/gradle/guice-application.gradle"
 apply from: "${rootDir}/gradle/publishing-java.gradle"
 
 if (!hasProperty('mainClass')) {
-  ext.mainClass = 'org.opentcs.modeleditor.RunModelEditor'
+  ext.mainClass = 'org.opentcs.kernel.RunKernel'
 }
 application.mainClass = ext.mainClass
 
 ext.collectableDistDir = new File(buildDir, 'install')
 
 configurations {
-  plantoverviewJar
+  kernelJar
 }
 
 dependencies {
-  implementation project(':openTCS-Example-Common')
+  implementation project(':opentcs-example-kernel-extension-statistics')
 
-  implementation libs.opentcs.modeleditor
+  implementation libs.opentcs.kernel
   implementation libs.opentcs.commadapter.vda5050
-  plantoverviewJar group: 'org.opentcs', name: 'opentcs-modeleditor', version: libs.versions.opentcs.baseline.get(), ext: 'jar'
+  kernelJar group: 'org.opentcs', name: 'opentcs-kernel', version: libs.versions.opentcs.baseline.get(), ext: 'jar'
 }
 
 distributions {
   main {
     contents {
-      from (zipTree(configurations.plantoverviewJar.singleFile)) {
-        include 'org/opentcs/modeleditor/distribution/**'
+      from (zipTree(configurations.kernelJar.singleFile)) {
+        include 'org/opentcs/kernel/distribution/**'
 
         eachFile { file ->
           // Remove the top-level folders. We only want the content of '/distribution'
@@ -36,7 +36,7 @@ distributions {
 
         includeEmptyDirs false
       }
-      from "${sourceSets.main.resources.srcDirs[0]}/com/example/modeleditor/distribution"
+      from "${sourceSets.main.resources.srcDirs[0]}/com/example/kernel/distribution"
     }
   }
 }
@@ -52,12 +52,10 @@ task release {
 
 run {
   systemProperties(['java.util.logging.config.file':'./config/logging.config',\
-                    'sun.java2d.d3d':'false',\
                     'opentcs.base':'.',\
                     'opentcs.home':'.',\
                     'opentcs.cfg4j.reload.interval':'10000',\
                     'opentcs.configuration.reload.interval':'10000',\
                     'opentcs.configuration.provider':'gestalt'])
-  jvmArgs('-XX:-OmitStackTraceInFastThrow',\
-          '-splash:bin/splash-image.gif')
+  jvmArgs('-XX:-OmitStackTraceInFastThrow')
 }

@@ -91,7 +91,7 @@ asciidoctor {
   attributes 'source-highlighter': 'coderay',
              'coderay-linenums-mode': 'table',
   // Custom attributes that we want to be substituted in the document.
-             'common-javaSrc': project(':openTCS-Example-Common').javaSrcDir,
+             'common-javaSrc': project(':opentcs-example-common').javaSrcDir,
              'buildDate': new Date().format('yyy-MM-dd'),
              'imagesoutdir': commAdapterDocsImagesDir, // Set the images directory for the output of asciidoctor-diagram
              // 'imagesdir': 'images',

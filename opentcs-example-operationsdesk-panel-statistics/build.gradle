@@ -5,7 +5,7 @@ apply from: "${rootDir}/gradle/guice-project.gradle"
 apply from: "${rootDir}/gradle/publishing-java.gradle"
 
 dependencies {
-  implementation project(':openTCS-Example-Common')
+  implementation project(':opentcs-example-common')
 
   implementation libs.opentcs.api.injection
   implementation libs.opentcs.common

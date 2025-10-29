@@ -6,13 +6,13 @@ Which openTCS release it is based on is defined in [gradle/dependency-versions.g
 
 ## Recommended usage
 
-Run `gradlew clean cloneProject <-PintegrationName=SomeName> <-PpackageName=com.example>`.
+Run `gradlew clean cloneProject <-PintegrationName=somename> <-PpackageName=com.example>`.
 The result will be a new integration project skeleton in the `build/` directory.
 (Running the `clean` task before `cloneProject`, as shown here, is recommended.)
 
 * `integrationName` is the name of the integration project.
   The name of the root project and subprojects for e.g. the kernel or the model editor application will contain this string.
-  Values could be a name of a plant or company where the resulting distribution will be used, e.g. `RoboLab` or `Yoyodyne`.
+  Values could be a name of a plant or company where the resulting distribution will be used, e.g. `robolab` or `yoyodyne`.
 * `packageName` is the base package name for classes in the integration project.
   Should be in a namespace that you own / is unlikely to clash with someone else's code, e.g. `com.yourcompany`.
 

@@ -11,7 +11,7 @@ import groovy.io.FileType
 // Path relative to the root project's build.gradle
 String basePath = ''
 
-String oldIntegrationName = 'Example'
+String oldIntegrationName = 'example'
 String newIntegrationName = args[0]
 String oldPackageName = "com.example"
 String oldPackagePath = oldPackageName.replace(".", "/")
@@ -22,7 +22,7 @@ String newPackagePath = newPackageName.replace(".", "/")
 Path sourcePath = new File(basePath).toPath().toAbsolutePath()
 
 // Create a directory with the new project name
-File destFile = new File('build/openTCS-Integration-' + newIntegrationName)
+File destFile = new File('build/opentcs-integration-' + newIntegrationName)
 
 // The path to the (new) destination project
 Path destPath = destFile.toPath().toAbsolutePath()
@@ -76,7 +76,7 @@ destFile.eachFileRecurse(FileType.FILES) { file ->
   // Adjust the build.gradle files for all sub-projects
   if (file.name.equals("build.gradle")) {
     file.text = file.text.replace(oldPackagePath, newPackagePath)
-    file.text = file.text.replace(oldIntegrationName, newIntegrationName)
+    file.text = file.text.replace('-' + oldIntegrationName + '-', '-' + newIntegrationName + '-')
   }
 
   // For all asciidoctor files, change packages to correspond to the new package name
@@ -87,7 +87,7 @@ destFile.eachFileRecurse(FileType.FILES) { file ->
 
 // Change file content for the root project's build.gradle
 File buildGradle = new File(destPath.resolve('build.gradle').toString())
-buildGradle.text = buildGradle.text.replace(oldIntegrationName, newIntegrationName)
+buildGradle.text = buildGradle.text.replace('-' + oldIntegrationName + '-', '-' + newIntegrationName + '-')
     .replaceAll(Pattern.compile("\\Rrepositories\\s\\{([^}]|\\R)+\\}\\R"), '') // Remove the 'repositories' block. We don't need the groovy dependency.
     .replaceAll(Pattern.compile("\\Rdependencies\\s\\{([^}]|\\R)+\\}\\R"), '') // Remove the 'dependencies' block. We don't need the groovy dependency.
     .replace('apply plugin: \'groovy\'', '') // We also don't need the groovy plugin
@@ -95,7 +95,7 @@ buildGradle.text = buildGradle.text.replace(oldIntegrationName, newIntegrationNa
 
 // Change file content for the root project's settings.gradle
 File settingsGradle = new File(destPath.resolve('settings.gradle').toString())
-settingsGradle.text = settingsGradle.text.replace(oldIntegrationName, newIntegrationName)
+settingsGradle.text = settingsGradle.text.replace('-' + oldIntegrationName, '-' + newIntegrationName)
 
 /**
  * Renames package directories in the {@code basePath} by moving files contained in the

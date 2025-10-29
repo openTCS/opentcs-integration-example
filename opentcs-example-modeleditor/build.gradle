@@ -5,7 +5,7 @@ apply from: "${rootDir}/gradle/guice-application.gradle"
 apply from: "${rootDir}/gradle/publishing-java.gradle"
 
 if (!hasProperty('mainClass')) {
-  ext.mainClass = 'org.opentcs.operationsdesk.RunOperationsDesk'
+  ext.mainClass = 'org.opentcs.modeleditor.RunModelEditor'
 }
 application.mainClass = ext.mainClass
 
@@ -16,18 +16,18 @@ configurations {
 }
 
 dependencies {
-  implementation project(':openTCS-Example-Common')
-  implementation project(':openTCS-Example-OperationsDesk-Panel-Statistics')
+  implementation project(':opentcs-example-common')
 
-  implementation libs.opentcs.operationsdesk
-  plantoverviewJar group: 'org.opentcs', name: 'opentcs-operationsdesk', version: libs.versions.opentcs.baseline.get(), ext: 'jar'
+  implementation libs.opentcs.modeleditor
+  implementation libs.opentcs.commadapter.vda5050
+  plantoverviewJar group: 'org.opentcs', name: 'opentcs-modeleditor', version: libs.versions.opentcs.baseline.get(), ext: 'jar'
 }
 
 distributions {
   main {
     contents {
       from (zipTree(configurations.plantoverviewJar.singleFile)) {
-        include 'org/opentcs/operationsdesk/distribution/**'
+        include 'org/opentcs/modeleditor/distribution/**'
 
         eachFile { file ->
           // Remove the top-level folders. We only want the content of '/distribution'
@@ -36,7 +36,7 @@ distributions {
 
         includeEmptyDirs false
       }
-      from "${sourceSets.main.resources.srcDirs[0]}/com/example/operationsdesk/distribution"
+      from "${sourceSets.main.resources.srcDirs[0]}/com/example/modeleditor/distribution"
     }
   }
 }

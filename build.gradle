@@ -36,29 +36,29 @@ subprojects {
 distributions {
   main {
     contents.from {
-      project(':openTCS-Example-Kernel').ext.collectableDistDir
+      project(':opentcs-example-kernel').ext.collectableDistDir
     }
     contents.from {
-      project(':openTCS-Example-KernelControlCenter').ext.collectableDistDir
+      project(':opentcs-example-kernelcontrolcenter').ext.collectableDistDir
     }
     contents.from {
-      project(':openTCS-Example-ModelEditor').ext.collectableDistDir
+      project(':opentcs-example-modeleditor').ext.collectableDistDir
     }
     contents.from {
-      project(':openTCS-Example-OperationsDesk').ext.collectableDistDir
+      project(':opentcs-example-operationsdesk').ext.collectableDistDir
     }
     contents.from {
-      project(':openTCS-Example-Documentation').ext.collectableDistDir
+      project(':opentcs-example-documentation').ext.collectableDistDir
     }
   }
 }
 
 task subDists {
-  dependsOn(':openTCS-Example-Kernel:installDist')
-  dependsOn(':openTCS-Example-KernelControlCenter:installDist')
-  dependsOn(':openTCS-Example-ModelEditor:installDist')
-  dependsOn(':openTCS-Example-OperationsDesk:installDist')
-  dependsOn(':openTCS-Example-Documentation:installDist')
+  dependsOn(':opentcs-example-kernel:installDist')
+  dependsOn(':opentcs-example-kernelcontrolcenter:installDist')
+  dependsOn(':opentcs-example-modeleditor:installDist')
+  dependsOn(':opentcs-example-operationsdesk:installDist')
+  dependsOn(':opentcs-example-documentation:installDist')
 }
 
 installDist.dependsOn subDists
@@ -81,7 +81,7 @@ task distSrcZip(type: Zip) {
   includes << 'config/**'
   includes << 'gradle/**'
   includes << 'lib/**'
-  includes << 'openTCS-*/**'
+  includes << 'opentcs-*/**'
   includes << 'src/**'
   includes << '.nb-gradle-properties'
   includes << '*.gradle'
@@ -110,7 +110,7 @@ task cloneProject(type: JavaExec) {
 
   classpath = sourceSets.main.runtimeClasspath
 
-  def integrationName = 'MyCustomProject'
+  def integrationName = 'mycustomproject'
   def packageName = 'com.example'
   if (project.hasProperty('integrationName')) {
     integrationName = project.getProperty('integrationName')

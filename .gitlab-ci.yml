@@ -69,11 +69,11 @@ build:
     name: 'opentcs-integration-project-build-b$CI_PIPELINE_IID'
     paths:
       - .gradle
-      - openTCS-*/build/classes/
-      - openTCS-*/build/generated/
-      - openTCS-*/build/libs/
-      - openTCS-*/build/resources/
-      - openTCS-*/build/tmp/
+      - opentcs-*/build/classes/
+      - opentcs-*/build/generated/
+      - opentcs-*/build/libs/
+      - opentcs-*/build/resources/
+      - opentcs-*/build/tmp/
     exclude:
       - .gradle/.tmp/**/*
       - .gradle/caches/**/*
@@ -92,14 +92,14 @@ test:
   script:
     - echo "Touching build results to prevent Gradle rebuilding them..."
     - find .gradle | xargs touch
-    - find . -regex '\./openTCS-[^/]+/build/.*' | xargs touch
+    - find . -regex '\./opentcs-[^/]+/build/.*' | xargs touch
     - echo "Running unit tests..."
     - ./gradlew test jacocoLogAggregatedCoverage -PNO_BUILD_NUMBER="$NO_BUILD_NUMBER"
   coverage: '/Branch Coverage: ([0-9.]+)%/'
   artifacts:
     name: 'opentcs-integration-project-test-b$CI_PIPELINE_IID'
     reports:
-      junit: openTCS-*/build/test-results/test/TEST-*.xml
+      junit: opentcs-*/build/test-results/test/TEST-*.xml
     when: always
     expire_in: 1 week
   cache:
@@ -112,10 +112,10 @@ test-cloning:
   interruptible: true
   dependencies: []
   script:
-    - ./gradlew cloneProject -PintegrationName=MyFavouriteCustomer -PpackageName=com.acme
-    - test -d build/openTCS-Integration-MyFavouriteCustomer
+    - ./gradlew cloneProject -PintegrationName=myfavouritecustomer -PpackageName=com.acme
+    - test -d build/opentcs-integration-myfavouritecustomer
         || (echo "Expected project directory not found." ; find build/ ; false)
-    - test -d build/openTCS-Integration-MyFavouriteCustomer/openTCS-MyFavouriteCustomer-Common/src/main/java/com/acme
+    - test -d build/opentcs-integration-myfavouritecustomer/opentcs-myfavouritecustomer-common/src/main/java/com/acme
         || (echo "Expected package directory not found." ; find build/ ; false)
   cache:
     key: test_cloning-$(date +%Y-%m)
@@ -133,7 +133,7 @@ lint:
   script:
     - echo "Touching build results to prevent Gradle rebuilding them..."
     - find .gradle | xargs touch
-    - find . -regex '\./openTCS-[^/]+/build/.*' | xargs touch
+    - find . -regex '\./opentcs-[^/]+/build/.*' | xargs touch
     - echo "Running CheckStyle checks..."
     - ./gradlew checkstyleMain checkstyleTest checkstyleGuiceConfig
     - echo "Converting CheckStyle reports to CodeClimate report..."
