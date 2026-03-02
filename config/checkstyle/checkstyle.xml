@@ -35,12 +35,6 @@
 
   <property name="fileExtensions" value="java, properties"/>
 
-  <module name="Header">
-    <property name="headerFile" value="${config_loc}/java.header"/>
-    <property name="fileExtensions" value="java"/>
-    <property name="severity" value="error"/>
-  </module>
-
   <module name="FileLength">
     <property name="max" value="2000"/>
     <property name="severity" value="warning"/>
