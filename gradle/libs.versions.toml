@@ -5,7 +5,7 @@ opentcs-commadapter-vda5050 = "0.30.0"
 # Other dependency versions
 checkstyle = "10.12.3"
 commons-io = "2.21.0"
-google-code-findbugs = "3.0.2"
+jakarta-annotation = "3.0.0"
 slf4j = "2.0.17"
 # Test dependency versions
 assertj = "3.27.6"
@@ -27,7 +27,7 @@ opentcs-modeleditor = { group = "org.opentcs", name = "opentcs-modeleditor", ver
 opentcs-operationsdesk = { group = "org.opentcs", name = "opentcs-operationsdesk", version.ref = "opentcs-baseline" }
 # Other dependencies
 commons-io = { group = "commons-io", name = "commons-io", version.ref = "commons-io" }
-google-code-findbugs = { group = "com.google.code.findbugs", name = "jsr305", version.ref = "google-code-findbugs" }
+jakarta-annotation = { group = "jakarta.annotation", name = "jakarta.annotation-api", version.ref = "jakarta-annotation" }
 slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j" }
 slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version.ref = "slf4j" }
 # Test dependencies

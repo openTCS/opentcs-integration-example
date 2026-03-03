@@ -11,8 +11,8 @@ repositories {
 dependencies {
   implementation libs.slf4j.api
 
-  compileOnly libs.google.code.findbugs
-  testCompileOnly libs.google.code.findbugs
+  compileOnly libs.jakarta.annotation
+  testCompileOnly libs.jakarta.annotation
 
   testImplementation libs.junit.jupiter.api
   testImplementation libs.junit.jupiter.params
