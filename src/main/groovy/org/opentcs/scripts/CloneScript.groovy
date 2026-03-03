@@ -135,7 +135,20 @@ def renamePackages(String basePath, String sourcePackagePath, String targetPacka
 class ExcludeFilter implements FileFilter {
 
   private Path excludeFrom;
-  private List<String> toExclude = [".git", ".gitignore", ".gradle", ".nb-gradle", "build", "src", "README.md"];
+  private List<String> toExclude = [
+      ".git",
+      ".github",
+      ".gitlab",
+      ".gitlab-ci.yml",
+      ".gitignore",
+      ".gradle",
+      ".idea",
+      ".nb-gradle",
+      "CONTRIBUTING.adoc",
+      "README.md",
+      "build",
+      "src"
+  ];
 
   ExcludeFilter(Path excludeFrom) {
     this.excludeFrom = excludeFrom;
