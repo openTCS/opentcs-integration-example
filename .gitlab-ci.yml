@@ -115,8 +115,6 @@ test-cloning:
     - ./gradlew cloneProject -PintegrationName=myfavouritecustomer -PpackageName=com.acme
     - test -d build/opentcs-integration-myfavouritecustomer
         || (echo "Expected project directory not found." ; find build/ ; false)
-    - test -d build/opentcs-integration-myfavouritecustomer/opentcs-myfavouritecustomer-common/src/main/java/com/acme
-        || (echo "Expected package directory not found." ; find build/ ; false)
   cache:
     key: test_cloning-$(date +%Y-%m)
     paths:

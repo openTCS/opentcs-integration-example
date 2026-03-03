@@ -17,7 +17,6 @@ configurations {
 
 dependencies {
   implementation project(':opentcs-example-common')
-  implementation project(':opentcs-example-operationsdesk-panel-statistics')
 
   implementation libs.opentcs.operationsdesk
   plantoverviewJar group: 'org.opentcs', name: 'opentcs-operationsdesk', version: libs.versions.opentcs.baseline.get(), ext: 'jar'

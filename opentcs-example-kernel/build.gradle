@@ -16,8 +16,6 @@ configurations {
 }
 
 dependencies {
-  implementation project(':opentcs-example-kernel-extension-statistics')
-
   implementation libs.opentcs.kernel
   implementation libs.opentcs.commadapter.vda5050
   kernelJar group: 'org.opentcs', name: 'opentcs-kernel', version: libs.versions.opentcs.baseline.get(), ext: 'jar'
